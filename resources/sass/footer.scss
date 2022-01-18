@@ -1,0 +1,27 @@
+.footer {
+  color: $secondary;
+  min-height: $footer-height;
+  &__main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  h3 {
+    letter-spacing: 0.25rem;
+    text-transform: uppercase;
+  }
+}
+
+.partners {
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  img {
+    max-height: 50px;
+    width: auto;
+  }
+  a {
+    padding: 1rem;
+  }
+}

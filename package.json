@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "NODE_ENV=production npx webpack --mode=production --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "build-in-docker": "docker exec -it webpack npm run build",
+    "watch": "NODE_ENV=development npx webpack --watch --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "devDependencies": {
+    "laravel-mix": "^4.0.7",
+    "resolve-url-loader": "^2.3.1",
+    "sass": "^1.15.2",
+    "sass-loader": "^7.1.0"
+  }
+}
