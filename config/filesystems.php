@@ -44,7 +44,7 @@ return [
 
         'stories' => [
             'driver' => 'local',
-            'root' => '../public/story_images',
+            'root' => '../www/story_images',
             'visibility' => 'public',
         ],
 
