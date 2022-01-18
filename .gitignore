@@ -16,3 +16,4 @@ yarn-error.log
 logs
 www/css/
 www/js
+www/mix-manifest.json
