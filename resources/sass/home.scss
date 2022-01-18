@@ -27,6 +27,7 @@
       -webkit-line-clamp: 4;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      word-break: break-word;
       color: $text;
     }
     &__title {
