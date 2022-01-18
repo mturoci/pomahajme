@@ -1,3 +1,11 @@
+Open sourced code for https://pomahajme.sk/, a non-profit fundraising site for disabled children. PRs welcome!
+
+## Dev setup
+
+```sh
+git clone https://github.com/MartinTuroci/pomahajme
+docker-compose up
+```
 ### Access db container
 
 Password is `pass` (specified in `.env.local`).
