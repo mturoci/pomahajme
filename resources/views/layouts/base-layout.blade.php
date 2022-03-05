@@ -57,6 +57,7 @@
     (object) ['url' => 'https://eshop.rdmgaraz.sk/', 'logo' => 'rdm.png'],
     (object) ['url' => 'https://www.macosro.sk/', 'logo' => 'maco.png'],
     (object) ['url' => 'http://pkauto.sk/', 'logo' => 'pkauto.svg'],
+    (object) ['url' => 'https://vysokofrekvencnaterapia.zombeek.sk', 'logo' => 'vysokofrekvencnaterapia.png'],
     ];
     @endphp
     <section class="footer__main">
