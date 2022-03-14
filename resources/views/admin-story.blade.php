@@ -24,7 +24,7 @@
   <input class="w-100" type="text" name="title" id="title" required value="{{$story->title ?? ''}}"
     oninvalid="this.setCustomValidity('Pole názov je povinné.')" oninput="this.setCustomValidity('')">
   <label for="content">Text</label>
-  <input id='hidden-content' type="hidden" name="content">
+  <input id='hidden-content' type="hidden" name="content" value="{{ strip_tags($story->content ?? '') }}">
   <div id="content">{{ strip_tags($story->content ?? '') }}</div>
   @if ($enableFiles ?? true)
   <label class="file-upload" for="images">Obrázky
@@ -63,4 +63,4 @@
       appendFileNames(files)
     })
 </script>
-@endsectio
+@endsection
