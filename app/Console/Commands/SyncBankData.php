@@ -42,22 +42,28 @@ class SyncBankData extends Command
      */
     public function handle()
     {
-        DB::transaction(function () {
-          $yesterday = Carbon::yesterday()->toDateString();
-          $token = env('BANK_TOKEN', null);
+        try {
+            DB::transaction(function () {
+              $yesterday = Carbon::yesterday()->toDateString();
+              $token = env('BANK_TOKEN', null);
 
-          if (!$token) throw new Exception('Bank API token not found.');
+              if (!$token) throw new Exception('Bank API token not found.');
 
-          $response = Http::get('https://www.fio.cz/ib_api/rest/periods/'.$token.'/'.$yesterday.'/'.$yesterday.'/transactions.json');
-          foreach (json_decode($response->getBody())->accountStatement->transactionList->transaction as $t) {
-              $transaction = new Transaction;
-              if ($t->column0) $transaction->date = str_replace('+0100', '', $t->column0->value);
-              if ($t->column1) $transaction->amount = $t->column1->value ?: null;
-              if ($t->column2) $transaction->account = $t->column2->value ?: null;
-              $transaction->save();
-          }
-        });
+              $response = Http::get('https://www.fio.cz/ib_api/rest/periods/'.$token.'/'.$yesterday.'/'.$yesterday.'/transactions.json');
+              foreach (json_decode($response->getBody())->accountStatement->transactionList->transaction as $t) {
+                  $transaction = new Transaction;
+                  if ($t->column0) $transaction->date = str_replace('+0200', '', $t->column0->value);
+                  if ($t->column1) $transaction->amount = $t->column1->value ?: null;
+                  if ($t->column2) $transaction->account = $t->column2->value ?: null;
+                  $transaction->save();
+              }
+            });
 
-        return Command::SUCCESS;
+            return Command::SUCCESS;
+        } catch (\Throwable $th) {
+            error_log($th->getMessage());
+            return Command::FAILURE;
+        }
+
     }
 }
