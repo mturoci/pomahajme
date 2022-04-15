@@ -7,40 +7,43 @@ use GuzzleHttp\Client;
 
 require __DIR__.'/../vendor/autoload.php';
 
+// HACK: Hosting provider allows running cron job at least every 12h (not every 24h like we need) so update only at midnight.
+if (Carbon::now()->hour == 0) {
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__.'/..');
-$dotenv->load();
+  $dotenv = Dotenv\Dotenv::createImmutable(__DIR__.'/..');
+  $dotenv->load();
 
-$capsule = new DB;
+  $capsule = new DB;
 
-$capsule->addConnection([
-    'driver'    => env('DB_CONNECTION'),
-    'host'      => env('DB_HOST'),
-    'database'  => env('DB_DATABASE'),
-    'username'  => env('DB_USERNAME'),
-    'password'  => env('DB_PASSWORD'),
-    'charset'   => 'utf8',
-    'collation' => 'utf8_unicode_ci',
-    'prefix'    => '',
-]);
+  $capsule->addConnection([
+      'driver'    => env('DB_CONNECTION'),
+      'host'      => env('DB_HOST'),
+      'database'  => env('DB_DATABASE'),
+      'username'  => env('DB_USERNAME'),
+      'password'  => env('DB_PASSWORD'),
+      'charset'   => 'utf8',
+      'collation' => 'utf8_unicode_ci',
+      'prefix'    => '',
+  ]);
 
-$capsule->setAsGlobal();
-$capsule->bootEloquent();
+  $capsule->setAsGlobal();
+  $capsule->bootEloquent();
 
-DB::connection()->transaction(function () {
-  $yesterday = Carbon::yesterday()->toDateString();
-  $token = env('BANK_TOKEN', null);
+  DB::connection()->transaction(function () {
+    $yesterday = Carbon::yesterday()->toDateString();
+    $token = env('BANK_TOKEN', null);
 
-  if (!$token) throw new Exception('Bank API token not found.');
+    if (!$token) throw new Exception('Bank API token not found.');
 
-  $client = new GuzzleHttp\Client(['base_uri' =>'https://www.fio.cz']);
-  $response = $client->request('GET', '/ib_api/rest/periods/'.$token.'/'.$yesterday.'/'.$yesterday.'/transactions.json');
+    $client = new GuzzleHttp\Client(['base_uri' =>'https://www.fio.cz']);
+    $response = $client->request('GET', '/ib_api/rest/periods/'.$token.'/'.$yesterday.'/'.$yesterday.'/transactions.json');
 
-  foreach (json_decode($response->getBody())->accountStatement->transactionList->transaction as $t) {
-      $transaction = new Transaction;
-      if ($t->column0) $transaction->date = explode('+', $t->column0->value)[0];
-      if ($t->column1) $transaction->amount = $t->column1->value ?: null;
-      if ($t->column2) $transaction->account = $t->column2->value ?: null;
-      $transaction->save();
-  }
-});
+    foreach (json_decode($response->getBody())->accountStatement->transactionList->transaction as $t) {
+        $transaction = new Transaction;
+        if ($t->column0) $transaction->date = explode('+', $t->column0->value)[0];
+        if ($t->column1) $transaction->amount = $t->column1->value ?: null;
+        if ($t->column2) $transaction->account = $t->column2->value ?: null;
+        $transaction->save();
+    }
+  });
+}
