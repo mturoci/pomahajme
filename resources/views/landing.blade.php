@@ -25,7 +25,7 @@
             const selector = document.getElementById(id)
             const step = count < 50 ? 1 : Math.floor(count / 100 * 2)
             const f = i => {
-                selector.innerHTML = i
+                selector.innerHTML = Math.trunc(i).toString()
                 if (i === Math.floor(count)) return
                 return requestAnimationFrame(() => f(i + step > count ? count : i + step))
             }
