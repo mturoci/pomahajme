@@ -23,8 +23,9 @@ if [ -z "$upload_files" ]; then
     exit 0
 fi
 
-upload_files=$(echo $upload_files | sed 's/ /,/g')
-curl -T "{$upload_files}" -u $FTP_USER:$FTP_PASS ftp://$FTP_HOST --ftp-create-dirs --no-epsv
+for file in $upload_files; do
+    curl -T $file -u $FTP_USER:$FTP_PASS "ftp://$FTP_HOST/$file" --ftp-create-dirs --no-epsv
+done
 
 # If there are no files to delete, exit.
 if [ -z "$delete_files" ]; then
@@ -32,5 +33,8 @@ if [ -z "$delete_files" ]; then
     exit 0
 fi
 
-delete_files=$(echo $delete_files | sed 's/ /,/g')
-curl -Q "-DELE $delete_files" -u $FTP_USER:$FTP_PASS ftp://$FTP_HOST --no-epsv
+for file in $delete_files; do
+    curl -Q "-DELE $file" -u $FTP_USER:$FTP_PASS "ftp://$FTP_HOST/$file" --no-epsv
+done
+
+# TODO: Publish frontend build with mix manifest.json file.
