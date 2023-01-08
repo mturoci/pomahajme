@@ -1,0 +1,16 @@
+on: push
+name: 🚀 Deploy website
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v2
+
+    - name: 📂 Sync files
+      run: ./publish_ftp.sh
+      env:
+        FTP_USER: ${{ secrets.POMAHAJME_FTP_USER }}
+        FTP_PASS: ${{ secrets.POMAHAJME_FTP_PASS }}
+        FTP_HOST: ${{ secrets.POMAHAJME_FTP_HOST }}
