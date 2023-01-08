@@ -24,7 +24,7 @@ if [ -z "$upload_files" ]; then
 fi
 
 upload_files=$(echo $upload_files | sed 's/ /,/g')
-# curl -T "{$upload_files}" -u $FTP_USER:$FTP_PASS ftp://$FTP_HOST
+curl -T "{$upload_files}" -u $FTP_USER:$FTP_PASS ftp://$FTP_HOST
 
 # If there are no files to delete, exit.
 if [ -z "$delete_files" ]; then
@@ -33,4 +33,4 @@ if [ -z "$delete_files" ]; then
 fi
 
 delete_files=$(echo $delete_files | sed 's/ /,/g')
-# curl -Q "-DELE $delete_files" -u $FTP_USER:$FTP_PASS ftp://$FTP_HOST
+curl -Q "-DELE $delete_files" -u $FTP_USER:$FTP_PASS ftp://$FTP_HOST
