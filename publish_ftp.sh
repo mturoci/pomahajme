@@ -1,7 +1,7 @@
-# if [ -z "$FTP_HOST" ] || [ -z "$FTP_USER" ] || [ -z "$FTP_PASS" ]; then
-#     echo "FTP_HOST, FTP_USER and FTP_PASS env variables must be set."
-#     exit 1
-# fi
+if [ -z "$FTP_HOST" ] || [ -z "$FTP_USER" ] || [ -z "$FTP_PASS" ]; then
+    echo "FTP_HOST, FTP_USER and FTP_PASS env variables must be set."
+    exit 1
+fi
 
 # Get last commit changed files.
 files=$(git diff --name-only HEAD^ HEAD)
@@ -24,7 +24,7 @@ if [ -z "$upload_files" ]; then
 fi
 
 upload_files=$(echo $upload_files | sed 's/ /,/g')
-curl -T "{$upload_files}" -u $FTP_USER:$FTP_PASS ftp://$FTP_HOST
+curl -T "{$upload_files}" -u $FTP_USER:$FTP_PASS ftp://$FTP_HOST --ftp-create-dirs --no-epsv
 
 # If there are no files to delete, exit.
 if [ -z "$delete_files" ]; then
@@ -33,4 +33,4 @@ if [ -z "$delete_files" ]; then
 fi
 
 delete_files=$(echo $delete_files | sed 's/ /,/g')
-curl -Q "-DELE $delete_files" -u $FTP_USER:$FTP_PASS ftp://$FTP_HOST
+curl -Q "-DELE $delete_files" -u $FTP_USER:$FTP_PASS ftp://$FTP_HOST --no-epsv
