@@ -30,7 +30,6 @@
 <body>
   <header>
     @include('icons.menu')
-    <a href='/' class="title">pomahajme.sk</a>
     <nav id='nav' class='nav'>
       <ul class='nav__list'>
         <li>
@@ -41,10 +40,13 @@
         </li>
       </ul>
     </nav>
-    <a href="https://www.facebook.com/pomahajme.sk/" target="_blank" rel="noopener" class="fb"
-      aria-label="odkaz na facebookovú stránku">
-      @include('icons.fb')
-    </a>
+    <div class="header__icons">
+      <a href='/' aria-label='logo'>@include('icons.logo')</a>
+      <a href="https://www.facebook.com/pomahajme.sk/" target="_blank" rel="noopener" class="fb"
+        aria-label="odkaz na facebookovú stránku">
+        @include('icons.fb')
+      </a>
+    </div>
   </header>
   <main>@yield('content')</main>
   <footer class="footer">

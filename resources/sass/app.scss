@@ -36,7 +36,6 @@ body {
 }
 
 main {
-  margin-top: 100px;
   min-height: calc(100vh - 5rem - 320px);
 }
 
@@ -118,9 +117,24 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 
-.landing-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+.landing {
+  color: $secondary;
+  background-image: url("../../www/img/landingCompressed.jpg");
+  background-position: center;
+  background-size: cover;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 1380px;
   margin: 0 auto;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
