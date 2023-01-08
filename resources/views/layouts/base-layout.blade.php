@@ -36,6 +36,7 @@
           <a href="/pribehy">Príbehy</a>
           <a href="/euro-nadeje">Euro nádeje</a>
           <a href="/kontakt">Kontakt</a>
+          <a href="/files/vyrocna_sprava.docx">Výročná správa</a>
           {{-- <a href="/statistika">Štatistika</a> --}}
         </li>
       </ul>
