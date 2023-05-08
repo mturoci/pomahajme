@@ -86,7 +86,7 @@
         <div class="partners">
           @foreach ($partners as $p)
           <a href={{ $p->url }} target="_blank" rel="noopener">
-            <img src={{ asset('img/'.$p->logo) }} alt={{ $p->url }} />
+            <img height='50' src={{ asset('img/'.$p->logo) }} alt={{ $p->url }} />
           </a>
           @endforeach
         </div>
@@ -96,7 +96,7 @@
         <div class="partners">
           @foreach ($sponsors as $s)
           <a href={{ $s->url }} target="_blank" rel="noopener">
-            <img src={{ asset('img/'.$s->logo) }} alt={{ $s->url }} />
+            <img height='50' src={{ asset('img/'.$s->logo) }} alt={{ $s->url }} />
           </a>
           @endforeach
         </div>
