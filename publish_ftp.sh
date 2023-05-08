@@ -39,8 +39,8 @@ fi
 # Publish FE build.
 curl -T www/mix-manifest.json -u $FTP_USER:$FTP_PASS "ftp://$FTP_HOST/www/mix-manifest.json" --no-epsv
 for file in $(ls www/js); do
-    curl -T $file -u $FTP_USER:$FTP_PASS "ftp://$FTP_HOST/$file" --ftp-create-dirs --no-epsv
+    curl -T $file -u $FTP_USER:$FTP_PASS "ftp://$FTP_HOST/www/js/$file" --ftp-create-dirs --no-epsv
 done
 for file in $(ls www/css); do
-    curl -T $file -u $FTP_USER:$FTP_PASS "ftp://$FTP_HOST/$file" --ftp-create-dirs --no-epsv
+    curl -T $file -u $FTP_USER:$FTP_PASS "ftp://$FTP_HOST/www/css/$file" --ftp-create-dirs --no-epsv
 done
