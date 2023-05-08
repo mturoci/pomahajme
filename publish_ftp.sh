@@ -17,24 +17,30 @@ for file in $files; do
     fi
 done
 
-# If there are no files to upload, exit.
 if [ -z "$upload_files" ]; then
     echo "No files to upload."
-    exit 0
+else
+    for file in $upload_files; do
+        curl -T $file -u $FTP_USER:$FTP_PASS "ftp://$FTP_HOST/$file" --ftp-create-dirs --no-epsv
+    done
 fi
 
-for file in $upload_files; do
+
+if [ -z "$delete_files" ];
+then
+    echo "No files to delete."
+else
+    for file in $delete_files; do
+        curl -Q "-DELE $file" -u $FTP_USER:$FTP_PASS "ftp://$FTP_HOST/$file" --no-epsv
+    done
+fi
+
+
+# Publish FE build.
+curl -T www/mix-manifest.json -u $FTP_USER:$FTP_PASS "ftp://$FTP_HOST/www/mix-manifest.json" --no-epsv
+for file in $(ls www/js); do
     curl -T $file -u $FTP_USER:$FTP_PASS "ftp://$FTP_HOST/$file" --ftp-create-dirs --no-epsv
 done
-
-# If there are no files to delete, exit.
-if [ -z "$delete_files" ]; then
-    echo "No files to delete."
-    exit 0
-fi
-
-for file in $delete_files; do
-    curl -Q "-DELE $file" -u $FTP_USER:$FTP_PASS "ftp://$FTP_HOST/$file" --no-epsv
+for file in $(ls www/css); do
+    curl -T $file -u $FTP_USER:$FTP_PASS "ftp://$FTP_HOST/$file" --ftp-create-dirs --no-epsv
 done
-
-# TODO: Publish frontend build with mix manifest.json file.
