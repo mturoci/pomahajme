@@ -73,7 +73,7 @@
     @endphp
     <section class="footer__main">
       <div class="pl-2">
-        <h3 class="p-2 text-center">KONTAKTY</h3>
+        <h2 class="p-2 text-center">KONTAKTY</h2>
         <p>Tomáš Berka zakladateľ a predseda o.z.</p>
         <p>info@pomahajme.sk</p>
         <p>0949 01 22 02</p>
@@ -82,7 +82,7 @@
           2423 (transparentný účet)</a>
       </div>
       <div class="pl-2">
-        <h3 class="p-2 text-center">REKLAMNÍ PARTNERI</h3>
+        <h2 class="p-2 text-center">REKLAMNÍ PARTNERI</h2>
         <div class="partners">
           @foreach ($partners as $p)
           <a href={{ $p->url }} target="_blank" rel="noopener">
@@ -92,7 +92,7 @@
         </div>
       </div>
       <div class="pl-2 pr-2">
-        <h3 class="p-2 text-center">SPONZORI</h3>
+        <h2 class="p-2 text-center">SPONZORI</h2>
         <div class="partners">
           @foreach ($sponsors as $s)
           <a href={{ $s->url }} target="_blank" rel="noopener">
