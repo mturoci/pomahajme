@@ -1,68 +1,68 @@
 version: "3"
 services:
-    app:
-        build:
-            context: .
-            dockerfile: php.dockerfile
-        container_name: app
-        tty: true
-        depends_on:
-            - "db"
-        environment:
-            SERVICE_NAME: app
-            SERVICE_TAGS: dev
-            APP_ENV: local
-        ports:
-            - "8000:8000"
-        volumes:
-            - ./app:/app/app
-            - ./resources:/app/resources
-            - ./www:/app/www
-            - ./config:/app/config
-            - ./storage:/app/storage
-            - ./routes:/app/routes
-            - ./database:/app/database
-            - ./webpack.mix.js:/app/webpack.mix.js
-            - ./schedule.php:/app/schedule.php
-        networks:
-            - app-network
+  app:
+    build:
+      context: .
+      dockerfile: php.dockerfile
+    container_name: app
+    tty: true
+    depends_on:
+      - "db"
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+      APP_ENV: local
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app/app
+      - ./resources:/app/resources
+      - ./www:/app/www
+      - ./config:/app/config
+      - ./storage:/app/storage
+      - ./routes:/app/routes
+      - ./database:/app/database
+      - ./webpack.mix.js:/app/webpack.mix.js
+      - ./www/schedule.php:/app/schedule.php
+    networks:
+      - app-network
 
-    db:
-        image: mysql:5.7.22
-        container_name: db
-        restart: unless-stopped
-        tty: true
-        ports:
-            - "3306:3306"
-        environment:
-            MYSQL_DATABASE: db
-            MYSQL_ROOT_PASSWORD: pass
-            SERVICE_TAGS: dev
-            SERVICE_NAME: mysql
-        volumes:
-            - dbdata:/var/lib/mysql
-        networks:
-            - app-network
+  db:
+    image: mysql:5.7.22
+    container_name: db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: db
+      MYSQL_ROOT_PASSWORD: pass
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - app-network
 
-    webpack:
-        container_name: webpack
-        build:
-            context: .
-            dockerfile: node.dockerfile
-        volumes:
-            - ./resources:/resources
-            - ./www:/www
-            - ./webpack.mix.js:/webpack.mix.js
-        ports:
-            - "3000:3000"
-            - "3001:3001"
-        networks:
-            - app-network
+  webpack:
+    container_name: webpack
+    build:
+      context: .
+      dockerfile: node.dockerfile
+    volumes:
+      - ./resources:/resources
+      - ./www:/www
+      - ./webpack.mix.js:/webpack.mix.js
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    networks:
+      - app-network
 
 #Docker Networks
 networks:
-    app-network:
-        driver: bridge
+  app-network:
+    driver: bridge
 volumes:
-    dbdata:
-        driver: local
+  dbdata:
+    driver: local
