@@ -18,27 +18,27 @@ use App\Transaction;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('landing', [
-        'raised' => Transaction::where('amount', '>', 0)->sum('amount'),
-        'storyCount' => Story::count(),
-        'donors' => Transaction::distinct()->count('date')
-    ]);
+  return view('landing', [
+    'raised' => Transaction::where('amount', '>', 0)->sum('amount'),
+    'storyCount' => Story::count(),
+    'donors' => Transaction::distinct()->count('date')
+  ]);
 });
 Route::get('/pribehy', [StoryController::class, 'index']);
 Route::get('/pribehy/{id}', [StoryController::class, 'show']);
 Route::get('/statistika', [StoryController::class, 'stats']);
 Route::get('/euro-nadeje', function () {
-    return view('euro');
+  return view('euro');
 });
-Route::get('/kontakt', function () {
-    return view('contact');
+Route::get('/o-nas', function () {
+  return view('contact');
 });
 Route::get('/admin', [StoryController::class, 'indexAdmin'])->middleware('auth');
 Route::get('/admin/login', function () {
-    return view('login');
+  return view('login');
 });
 Route::get('/admin/pribeh', function () {
-    return view('admin-story', ['title' => 'Pridať príbeh', 'btn' => 'Vytvoriť']);
+  return view('admin-story', ['title' => 'Pridať príbeh', 'btn' => 'Vytvoriť']);
 })->middleware('auth');
 Route::get('/admin/upravit-pribeh', [StoryController::class, 'update'])->middleware('auth');
 
