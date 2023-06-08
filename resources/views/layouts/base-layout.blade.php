@@ -3,26 +3,24 @@
 
 <head>
   <script>
-    window.ga = window.ga || function () {
-            (ga.q = ga.q || []).push(arguments)
-        };
-        ga.l = +new Date;
-        ga('create', 'UA-151593080-1', 'auto');
-        ga('send', 'pageview');
+    window.ga = window.ga || function() {
+      (ga.q = ga.q || []).push(arguments)
+    };
+    ga.l = +new Date;
+    ga('create', 'UA-151593080-1', 'auto');
+    ga('send', 'pageview');
   </script>
   <script async src='https://www.google-analytics.com/analytics.js'></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Stránka zameraná na zbierku peňazí pre rodiny s chorými deťmi, ktoré majú finančné ťažkosti.">
+  <meta name="description" content="Stránka zameraná na zbierku peňazí pre rodiny s chorými deťmi, ktoré majú finančné ťažkosti.">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   @stack('meta')
   <title>Pomahajme.sk</title>
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" as="style"
-    onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -38,7 +36,7 @@
         <li>
           <a href="/pribehy">Príbehy</a>
           <a href="/euro-nadeje">Euro nádeje</a>
-          <a href="/kontakt">Kontakt</a>
+          <a href="/o-nas">O nás</a>
           <a href="/files/vyrocna_sprava.docx">Výročná správa</a>
           {{-- <a href="/statistika">Štatistika</a> --}}
         </li>
@@ -46,8 +44,7 @@
     </nav>
     <div class="header__icons">
       <a href='/' aria-label='logo'>@include('icons.logo')</a>
-      <a href="https://www.facebook.com/pomahajme.sk/" target="_blank" rel="noopener" class="fb"
-        aria-label="odkaz na facebookovú stránku">
+      <a href="https://www.facebook.com/pomahajme.sk/" target="_blank" rel="noopener" class="fb" aria-label="odkaz na facebookovú stránku">
         @include('icons.fb')
       </a>
     </div>
@@ -73,16 +70,17 @@
     ];
     @endphp
     <section class="footer__main">
-      <div class="pl-2">
-        <h2 class="p-2 text-center">KONTAKTY</h2>
-        <p>Tomáš Berka zakladateľ a predseda o.z.</p>
-        <p>info@pomahajme.sk</p>
-        <p>0949 01 22 02</p>
-        <a href="https://ib.fio.sk/ib/transparent?a=2201942423" target="_blank" rel="noopener">SK41 8330 0000 0022
-          0194
-          2423 (transparentný účet)</a>
-      </div>
-      <div class="pl-2">
+      <address class="pl-2">
+        <h2 class="p-2 text-center">KONTAKT</h2>
+        <p>Tomáš Berka zakladateľ a predseda o.z. Podaj Pomoc</p>
+        <p>MV SR, číslo spisu: VVS/1-900/90-60082</p>
+        <p>Okružná 142, 08212 Kapušany</p>
+        <p>IČO: 53358066</p>
+        <a href="mailto:info@pomahajme.sk">info@pomahajme.sk</a>
+        <a href="tel:0949 01 22 02">0949 012 202</a>
+        <a href="https://ib.fio.sk/ib/transparent?a=2201942423" target="_blank" rel="noopener">SK41 8330 0000 0022 0194 2423 (transparentný účet)</a>
+      </address>
+      <article class="pl-2">
         <h2 class="p-2 text-center">REKLAMNÍ PARTNERI</h2>
         <div class="partners">
           @foreach ($partners as $p)
@@ -91,8 +89,8 @@
           </a>
           @endforeach
         </div>
-      </div>
-      <div class="pl-2 pr-2">
+      </article>
+      <article class="pl-2 pr-2">
         <h2 class="p-2 text-center">SPONZORI</h2>
         <div class="partners">
           @foreach ($sponsors as $s)
@@ -101,24 +99,24 @@
           </a>
           @endforeach
         </div>
-      </div>
+      </article>
     </section>
-    <section class="text-center p-2 font-w7">2020 © pomahajme.sk / Všetky práva vyhradené.</section>
+    <section class="text-center p-2 font-w7">{{ date('Y') }} © pomahajme.sk / Všetky práva vyhradené.</section>
   </footer>
   <script>
     document.getElementById('menu').onclick = onMenuClick
     let isMenuOpen = false;
 
     function onMenuClick() {
-        isMenuOpen = !isMenuOpen
-        const nav = document.getElementById('nav');
-        if (isMenuOpen) {
-            nav.classList.add('open')
-            nav.classList.remove('closed')
-        } else {
-            nav.classList.add('closed')
-            nav.classList.remove('open')
-        }
+      isMenuOpen = !isMenuOpen
+      const nav = document.getElementById('nav');
+      if (isMenuOpen) {
+        nav.classList.add('open')
+        nav.classList.remove('closed')
+      } else {
+        nav.classList.add('closed')
+        nav.classList.remove('open')
+      }
     }
   </script>
 </body>

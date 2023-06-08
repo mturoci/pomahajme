@@ -45,6 +45,19 @@ a {
   width: fit-content;
 }
 
+address {
+  font-style: normal;
+
+  a {
+    display: block;
+  }
+
+  a,
+  p {
+    line-height: 1.3rem;
+  }
+}
+
 button {
   padding: 1rem;
   background: $primary;

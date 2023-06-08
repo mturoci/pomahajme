@@ -2,27 +2,15 @@
 
 .contact {
   margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  max-width: 1200px;
+  color: $secondary;
+  line-height: 1.6;
 
-  &__tile {
-    background: $secondary;
-    width: 300px;
-    min-width: 300px;
-    border-radius: 4px;
-  }
-
-  svg {
-    height: 150px;
-    max-width: 300px;
-    fill: $primary;
-  }
-  p {
-    color: $text;
-  }
   a {
     color: $primary;
-    display: block;
+  }
+
+  ol {
+    list-style-type: lower-alpha;
   }
 }
