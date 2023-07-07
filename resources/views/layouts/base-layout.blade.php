@@ -2,31 +2,31 @@
 <html lang="sk">
 
 <head>
-  <script>
-    window.ga = window.ga || function() {
-      (ga.q = ga.q || []).push(arguments)
-    };
-    ga.l = +new Date;
-    ga('create', 'UA-151593080-1', 'auto');
-    ga('send', 'pageview');
-  </script>
-  <script async src='https://www.google-analytics.com/analytics.js'></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Stránka zameraná na zbierku peňazí pre rodiny s chorými deťmi, ktoré majú finančné ťažkosti.">
+  <meta name="description"
+    content="Stránka zameraná na zbierku peňazí pre rodiny s chorými deťmi, ktoré majú finančné ťažkosti.">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   @stack('meta')
   <title>Pomahajme.sk</title>
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" as="style"
+    onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   @stack('styles')
   @stack('scripts')
 </head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T5TX4P5G8Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-T5TX4P5G8Z');
+</script>
 
 <body>
   <header>
@@ -44,7 +44,8 @@
     </nav>
     <div class="header__icons">
       <a href='/' aria-label='logo'>@include('icons.logo')</a>
-      <a href="https://www.facebook.com/pomahajme.sk/" target="_blank" rel="noopener" class="fb" aria-label="odkaz na facebookovú stránku">
+      <a href="https://www.facebook.com/pomahajme.sk/" target="_blank" rel="noopener" class="fb"
+        aria-label="odkaz na facebookovú stránku">
         @include('icons.fb')
       </a>
     </div>
@@ -78,7 +79,8 @@
         <p>IČO: 53358066</p>
         <a href="mailto:info@pomahajme.sk">info@pomahajme.sk</a>
         <a href="tel:0949 01 22 02">0949 012 202</a>
-        <a href="https://ib.fio.sk/ib/transparent?a=2201942423" target="_blank" rel="noopener">SK41 8330 0000 0022 0194 2423 (transparentný účet)</a>
+        <a href="https://ib.fio.sk/ib/transparent?a=2201942423" target="_blank" rel="noopener">SK41 8330 0000 0022 0194
+          2423 (transparentný účet)</a>
       </address>
       <article class="pl-2">
         <h2 class="p-2 text-center">REKLAMNÍ PARTNERI</h2>
