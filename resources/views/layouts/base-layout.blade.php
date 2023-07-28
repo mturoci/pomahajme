@@ -69,6 +69,9 @@
     (object) ['url' => 'https://vysokofrekvencnaterapia.zombeek.sk', 'logo' => 'vysokofrekvencnaterapia.png'],
     (object) ['url' => 'https://www.facebook.com/progress.truskavets', 'logo' => 'progress.png'],
     ];
+    $awards = [
+    (object) ['url' => 'https://www.zlatafirma.eu', 'logo' => 'zlata-firma.png'],
+    ];
     @endphp
     <section class="footer__main">
       <address class="pl-2">
@@ -103,6 +106,16 @@
         </div>
       </article>
     </section>
+    <article class="pl-2 pr-2">
+      <h2 class="p-2 text-center">OCENENIA</h2>
+      <div class="partners">
+        @foreach ($awards as $a)
+        <a href={{ $a->url }} target="_blank" rel="noopener">
+          <img height='50' src={{ asset('img/'.$a->logo) }} alt={{ $a->url }} />
+        </a>
+        @endforeach
+      </div>
+    </article>
     <section class="text-center p-2 font-w7">{{ date('Y') }} © pomahajme.sk / Všetky práva vyhradené.</section>
   </footer>
   <script>

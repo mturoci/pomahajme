@@ -23,7 +23,6 @@ services:
       - ./routes:/app/routes
       - ./database:/app/database
       - ./webpack.mix.js:/app/webpack.mix.js
-      - ./www/schedule.php:/app/schedule.php
     networks:
       - app-network
 
