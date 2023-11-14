@@ -36,6 +36,7 @@
         <li>
           <a href="/pribehy">Príbehy</a>
           <a href="/euro-nadeje">Euro nádeje</a>
+          <a href="/dokonale-vianoce">Dokonalé Vianoce</a>
           <a href="/o-nas">O nás</a>
           <a href="/files/vyrocna_sprava.docx">Výročná správa</a>
           {{-- <a href="/statistika">Štatistika</a> --}}

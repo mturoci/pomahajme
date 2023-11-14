@@ -16,6 +16,7 @@ mix
   .sass('./resources/sass/app.scss', 'css')
   .sass('./resources/sass/story.scss', 'css')
   .sass('./resources/sass/euro.scss', 'css')
+  .sass('./resources/sass/christmas.scss', 'css')
   .sass('./resources/sass/contact.scss', 'css')
   .sass('./resources/sass/login.scss', 'css')
   .sass('./resources/sass/admin.scss', 'css')

@@ -30,6 +30,9 @@ Route::get('/statistika', [StoryController::class, 'stats']);
 Route::get('/euro-nadeje', function () {
   return view('euro');
 });
+Route::get('/dokonale-vianoce', function () {
+  return view('dokonale-vianoce');
+});
 Route::get('/o-nas', function () {
   return view('contact');
 });
