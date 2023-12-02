@@ -1,6 +1,7 @@
 @import "variables";
 
 $sidenavWidth: 75vw;
+$breakpoint: 1200px;
 
 .header__icons {
   display: flex;
@@ -18,8 +19,10 @@ $sidenavWidth: 75vw;
   right: 0;
   text-align: center;
   margin: 0 auto;
+
   &__list {
     list-style: none;
+
     li a {
       display: inline;
       font-weight: 700;
@@ -29,7 +32,8 @@ $sidenavWidth: 75vw;
       padding: 15px;
     }
   }
-  @media (max-width: 1050px) {
+
+  @media (max-width: $breakpoint) {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -41,6 +45,7 @@ $sidenavWidth: 75vw;
     transform: translateX(-$sidenavWidth);
     border-right: 2px solid $primary;
     box-sizing: border-box;
+
     li a {
       display: block;
       letter-spacing: initial;
@@ -55,6 +60,7 @@ $sidenavWidth: 75vw;
   transition: transform 0.5s;
   transform: translateX(0);
 }
+
 .closed {
   transition: transform 0.5s;
   transform: translateX(-$sidenavWidth);
@@ -62,7 +68,8 @@ $sidenavWidth: 75vw;
 
 #menu {
   display: none;
-  @media (max-width: 1050px) {
+
+  @media (max-width: $breakpoint) {
     display: block;
     position: fixed;
     bottom: 6rem;

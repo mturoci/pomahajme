@@ -39,6 +39,7 @@
           <a href="/dokonale-vianoce">Dokonalé Vianoce</a>
           <a href="/o-nas">O nás</a>
           <a href="/files/vyrocna_sprava.docx">Výročná správa</a>
+          <a href="/files/vyhlasenie_2%.pdf" download>2%</a>
           {{-- <a href="/statistika">Štatistika</a> --}}
         </li>
       </ul>
