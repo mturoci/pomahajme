@@ -62,6 +62,8 @@
     (object) ['url' => 'https://www.mojadm.sk/', 'logo' => 'dm.png'],
     (object) ['url' => 'https://fitshaker.sk/', 'logo' => 'fitshaker.svg'],
     (object) ['url' => 'https://www.golftatry.sk/', 'logo' => 'blackstorck.svg'],
+    (object) ['url' => 'https://www.trustpay.sk/', 'logo' => 'trustpay.svg'],
+    (object) ['url' => 'https://www.lconsultingsk.sk/', 'logo' => 'lconsulting.png'],
     ];
     $partners = [
     (object) ['url' => 'https://delfinoterapiask.eu/', 'logo' => 'delfinoterapia.png'],
