@@ -57,7 +57,6 @@
     @php
     $sponsors = [
     (object) ['url' => 'https://www.mynidum.sk/', 'logo' => 'nidum.svg'],
-    (object) ['url' => 'https://pajko.sk/', 'logo' => 'pajko.png'],
     (object) ['url' => 'https://insempre.sk/', 'logo' => 'insempre.png'],
     (object) ['url' => 'https://www.mojadm.sk/', 'logo' => 'dm.png'],
     (object) ['url' => 'https://fitshaker.sk/', 'logo' => 'fitshaker.svg'],
