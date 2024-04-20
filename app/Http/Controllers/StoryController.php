@@ -92,7 +92,7 @@ class StoryController extends Controller
     {
         $baseUrl  = env('TRUSTPAY_URL', '');
         $accountId = env('TRUSTPAY_ID', '');
-        $amount = 1.5;
+        $amount = 5;
         $currency = "EUR";
         $paymentType = 0;
         $secretKey = env('TRUSTPAY_SECRET', '');
@@ -116,7 +116,7 @@ class StoryController extends Controller
         $story->serializedImageLocations = explode("|", $story->serializedImageLocations);
         return view('story', [
           'story' => $story,
-          'paymentUrl' => $this->getSetUpPaymentUrl($story->reference || '')
+          'paymentUrl' => $this->getSetUpPaymentUrl($story->reference ?: 'default')
         ]);
     }
 
