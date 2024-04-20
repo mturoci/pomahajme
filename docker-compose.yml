@@ -23,6 +23,7 @@ services:
             - ./routes:/app/routes
             - ./database:/app/database
             - ./webpack.mix.js:/app/webpack.mix.js
+            - ./.env.local:/app/.env.local
         networks:
             - app-network
 

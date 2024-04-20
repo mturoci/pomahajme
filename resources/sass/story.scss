@@ -46,4 +46,10 @@ $lhsWidth: 300px;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-gap: 20px 20px;
   }
+  &__cta {
+    display: block;
+    margin: 2rem auto;
+    font-weight: 900;
+    width: 10rem;
+  }
 }

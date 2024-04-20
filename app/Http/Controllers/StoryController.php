@@ -69,7 +69,7 @@ class StoryController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(['images' => 'required', 'title' => 'required', 'content' => 'required']);
+        $request->validate(['images' => 'required', 'title' => 'required', 'content' => 'required', 'reference' => 'required']);
 
         $imageLocations = array_map(function($file) { return Storage::disk('stories')->putFile('', $file); }, $request->images);
 
@@ -77,6 +77,7 @@ class StoryController extends Controller
         $story->title = $request->title;
         $story->content = $request->content;
         $story->serializedImageLocations=implode('|', $imageLocations);
+        $story->reference = $request->reference;
 
         if($story->save()) {
           $stories = Story::orderByDesc('created_at')->get();
@@ -87,6 +88,22 @@ class StoryController extends Controller
         return redirect('/admin')->withErrors(['not_found' => $stories]);
     }
 
+    private function getSetUpPaymentUrl(string $reference)
+    {
+        $baseUrl  = env('TRUSTPAY_URL', '');
+        $accountId = env('TRUSTPAY_ID', '');
+        $amount = 1.5;
+        $currency = "EUR";
+        $paymentType = 0;
+        $secretKey = env('TRUSTPAY_SECRET', '');
+        $sigData = sprintf("%d/%s/%s/%s/%d", $accountId, number_format($amount, 2, '.', ''), $currency, $reference, $paymentType);
+        $signature = hash_hmac('sha256', $sigData, $secretKey);
+
+        return sprintf(
+            "%s?AccountId=%d&Amount=%s&Currency=%s&Reference=%s&PaymentType=%d&Signature=%s",
+            $baseUrl, $accountId, number_format($amount, 2, '.', ''), $currency,
+            urlencode($reference), $paymentType, $signature);
+    }
     /**
      * Display the specified resource.
      *
@@ -97,7 +114,10 @@ class StoryController extends Controller
     {
         $story = Story::findOrFail($id);
         $story->serializedImageLocations = explode("|", $story->serializedImageLocations);
-        return view('story', ['story' => $story]);
+        return view('story', [
+          'story' => $story,
+          'paymentUrl' => $this->getSetUpPaymentUrl($story->reference || '')
+        ]);
     }
 
     /**

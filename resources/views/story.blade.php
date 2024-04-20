@@ -11,12 +11,15 @@
 <meta content={{ 'https://pomahajme.sk/images/' .$story->serializedImageLocations[0] }} property="og:image" />
 <meta content="article" property="og:type" />
 <meta content="1119182411925760" property="fb:app_id" />
+<script defer crossorigin="anonymous"
+  src="https://connect.facebook.net/sk_SK/sdk.js#xfbml=1&version=v12.0&appId=1119182411925760&autoLogAppEvents=1"
+  nonce="41WSpN1a"></script>
+<script defer src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+<script defer type="text/javascript" src="https://mapi.trustpay.eu/mapi5/Scripts/TrustPay/popup.js"></script>
 @endpush
 @section('content')
 <div id="fb-root"></div>
-<script async defer crossorigin="anonymous"
-  src="https://connect.facebook.net/sk_SK/sdk.js#xfbml=1&version=v12.0&appId=1119182411925760&autoLogAppEvents=1"
-  nonce="41WSpN1a"></script>
+<iframe id="TrustPayFrame" src={{ $paymentUrl }}></iframe>
 <article class="story p-2">
   <div class="story__main">
     <div class="story__lhs">
@@ -32,6 +35,7 @@
     <div class="story__text">
       <h1 class="story__title ml-1 mb-1 mr-1">{{ $story->title }}</h1>
       <div class="story__content font-size-2 mr-1 ml-1">{!! $story->content !!}</div>
+      <button class="show-popup story__cta">POMÔCŤ</button>
     </div>
   </div>
   <h2 class="mt-1 mb-1">Ďalšie obrázky</h2>

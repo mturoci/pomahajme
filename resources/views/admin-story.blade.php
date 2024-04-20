@@ -23,6 +23,9 @@
   <label for="title">Názov</label>
   <input class="w-100" type="text" name="title" id="title" required value="{{$story->title ?? ''}}"
     oninvalid="this.setCustomValidity('Pole názov je povinné.')" oninput="this.setCustomValidity('')">
+  <label for="reference">Variabilný symbol</label>
+  <input class="w-100" type="number" name="reference" id="reference" required value="{{$story->reference ?? ''}}"
+    oninvalid="this.setCustomValidity('Pole variabilný symbol je povinné.')" oninput="this.setCustomValidity('')">
   <label for="content">Text</label>
   <input id='hidden-content' type="hidden" name="content" value="{{ strip_tags($story->content ?? '') }}">
   <div id="content">{{ strip_tags($story->content ?? '')}}</div>
