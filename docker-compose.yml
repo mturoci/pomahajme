@@ -54,9 +54,9 @@ services:
             - ./resources:/resources
             - ./www:/www
             - ./webpack.mix.js:/webpack.mix.js
-        ports:
-            - "3000:3000"
-            - "3001:3001"
+        # ports:
+        #     - "3000:3000"
+        #     - "3001:3001"
         networks:
             - app-network
 
