@@ -65,6 +65,7 @@
     (object) ['url' => 'https://www.lconsultingsk.sk/', 'logo' => 'lconsulting.png'],
     ];
     $partners = [
+    (object) ['url' => 'https://novumpresov.sk/', 'logo' => 'novum.svg'],
     (object) ['url' => 'https://delfinoterapiask.eu/', 'logo' => 'delfinoterapia.png'],
     (object) ['url' => 'https://eshop.rdmgaraz.sk/', 'logo' => 'rdm.png'],
     (object) ['url' => 'https://www.macosro.sk/', 'logo' => 'maco.png'],
