@@ -38,8 +38,7 @@
           <a href="/euro-nadeje">Euro nádeje</a>
           <a href="/dokonale-vianoce">Dokonalé Vianoce</a>
           <a href="/o-nas">O nás</a>
-          <a href="/files/vyrocna_sprava.docx">Výročná správa</a>
-          <a href="/files/pomahajme_2_percenta.pdf" download>2%</a>
+          <a href="/dokumenty">Dokumenty</a>
           {{-- <a href="/statistika">Štatistika</a> --}}
         </li>
       </ul>

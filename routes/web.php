@@ -52,3 +52,7 @@ Route::post('/admin/pribeh', [StoryController::class, 'store'])->middleware('aut
 Route::post('/admin/login', [LoginController::class, 'authenticate']);
 
 Route::put('/admin/upravit-pribeh', [StoryController::class, 'update'])->middleware('auth');
+
+Route::get('/dokumenty', function () {
+    return view('documents');
+});
