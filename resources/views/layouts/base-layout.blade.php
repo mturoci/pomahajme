@@ -92,6 +92,29 @@
     </main>
 
     <footer class="backdrop-blur-sm mt-32 py-12 max-w-7xl mx-auto px-6 lg:px-8">
+        @php
+            $partners = [
+                (object) ['url' => 'https://www.mynidum.sk/', 'logo' => 'nidum.svg'],
+                (object) ['url' => 'https://insempre.sk/', 'logo' => 'insempre.png'],
+                (object) ['url' => 'https://www.mojadm.sk/', 'logo' => 'dm.png'],
+                (object) ['url' => 'https://fitshaker.sk/', 'logo' => 'fitshaker.svg'],
+                (object) ['url' => 'https://www.golftatry.sk/', 'logo' => 'blackstorck.svg'],
+                (object) ['url' => 'https://www.trustpay.sk/', 'logo' => 'trustpay.svg'],
+                (object) ['url' => 'https://www.facebook.com/progress.truskavets', 'logo' => 'progress.png'],
+                (object) ['url' => 'https://www.lconsultingsk.sk/', 'logo' => 'lconsulting.png'],
+                (object) ['url' => 'https://novumpresov.sk/', 'logo' => 'novum.svg'],
+                (object) ['url' => 'https://delfinoterapiask.eu/', 'logo' => 'delfinoterapia.png'],
+                (object) ['url' => 'https://eshop.rdmgaraz.sk/', 'logo' => 'rdm.png'],
+                (object) ['url' => 'https://www.macosro.sk/', 'logo' => 'maco.png'],
+                (object) ['url' => 'http://pkauto.sk/', 'logo' => 'pkauto.svg'],
+                (object) [
+                    'url' => 'https://vysokofrekvencnaterapia.zombeek.sk',
+                    'logo' => 'vysokofrekvencnaterapia.png',
+                ],
+            ];
+
+            $awards = [(object) ['url' => 'https://www.zlatafirma.eu', 'logo' => 'zlata-firma.png']];
+        @endphp
         <h2 class="text-center text-white text-4xl font-semibold">Partneri</h2>
         <div class="flex flex-wrap gap-8 mt-8">
             @foreach ($partners as $p)
