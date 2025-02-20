@@ -1,41 +1,51 @@
 @extends('layouts.base-layout')
-@push('styles')<link href="{{ mix('css/admin.css') }}" rel="stylesheet">@endpush
 @section('content')
-<div class="card p-3">
-  @if ($message ?? null || session()->has('message'))
-    <div class="success p-1">{{ $message ?? session('message')}}</div>
-  @endif
-  <div class="w-100 text-right">
-    <a href="/admin/pribeh"><button class="success mr-1">Pridať príbeh</button></a>
-  </div>
-  <table>
-    <thead>
-      <tr>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-    @foreach ($stories as $story)
-      <tr>
-        <td>{{ $story->title }}</td>
-        <td style="min-width:150px">{{ $story->created_at ?: 'Neznáme' }}</td>
-        <td>
-          <a href="/admin/upravit-pribeh?id={{ $story->id }}"><button class="warning">UPRAVIŤ</button></a>
-        </td>
-        <td>
-          <form method="POST">
-            @csrf
-            {{ method_field('DELETE') }}
-            <input type="hidden" name="id" value="{{ $story->id }}">
-            <button class="danger">VYMAZAŤ</button>
-          </form>
-        </td>
-      </tr>
-    @endforeach
-    </tbody>
-  </table>
-</div>
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <div class="bg-secondary rounded-lg shadow-lg p-6">
+            @if ($message ?? null || session()->has('message'))
+                <div class="bg-success-light text-success p-4 rounded mb-4">
+                    {{ $message ?? session('message') }}
+                </div>
+            @endif
+
+            <div class="text-right mb-4">
+                <a href="/admin/pribeh">
+                    <button class="bg-success hover:bg-success/90 text-success-text">Pridať príbeh</button>
+                </a>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-gray-700">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Názov
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Dátum
+                            </th>
+                            <th class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        @foreach ($stories as $story)
+                            <tr class="odd:bg-white even:bg-gray-50">
+                                <td class="px-6 py-4">{{ $story->title }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $story->created_at ?: 'Neznáme' }}</td>
+                                <td class="px-6 py-4 flex items-center justify-end gap-4">
+                                    <a href="/admin/upravit-pribeh?id={{ $story->id }}" class="block">
+                                        <button class="bg-warning hover:bg-warning/90 text-warning-text">UPRAVIŤ</button>
+                                    </a>
+                                    <form method="POST">
+                                        @csrf
+                                        {{ method_field('DELETE') }}
+                                        <input type="hidden" name="id" value="{{ $story->id }}">
+                                        <button class="bg-danger hover:bg-danger/90 text-danger-text">VYMAZAŤ</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 @endsection

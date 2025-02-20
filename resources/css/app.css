@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    h1 {
+        @apply text-4xl font-bold mb-4;
+    }
+
+    h2 {
+        @apply text-2xl font-semibold mb-3;
+    }
+
+    h3 {
+        @apply text-xl font-medium mb-2;
+    }
+
+    p {
+        @apply leading-relaxed;
+    }
+
+    a {
+        @apply text-secondary no-underline hover:text-opacity-80 transition-colors;
+    }
+
+    button {
+        @apply px-4 py-2 bg-primary text-secondary rounded hover:bg-opacity-90 transition-colors cursor-pointer;
+    }
+
+    input,
+    textarea {
+        @apply block w-full px-3 py-2 border border-tertiary rounded focus:ring-2 focus:ring-primary focus:border-transparent;
+    }
+
+    label {
+        @apply block mt-4 mb-1;
+    }
+}
+
+@layer components {
+    .card {
+        @apply bg-secondary rounded-lg shadow-lg p-6;
+    }
+}
+
+.responsive-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

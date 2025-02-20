@@ -7,5 +7,7 @@ RUN npm i
 COPY resources resources
 COPY www www
 COPY webpack.mix.js .
+COPY tailwind.config.js .
+COPY postcss.config.js .
 
 CMD ["npm", "run", "watch"]

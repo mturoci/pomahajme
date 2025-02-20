@@ -12,16 +12,10 @@ const mix = require("laravel-mix");
  */
 
 mix.setPublicPath("www")
-    .sass("./resources/sass/app.scss", "css")
-    .sass("./resources/sass/story.scss", "css")
-    .sass("./resources/sass/euro.scss", "css")
-    .sass("./resources/sass/christmas.scss", "css")
-    .sass("./resources/sass/contact.scss", "css")
-    .sass("./resources/sass/login.scss", "css")
-    .sass("./resources/sass/admin.scss", "css")
-    .sass("./resources/sass/admin-story.scss", "css")
-    .sass("./resources/sass/stats.scss", "css")
-    .sass("./resources/sass/documents.scss", "css")
     .js("./resources/js/messenger.js", "js")
+    .postCss("./resources/css/app.css", "css", [
+        require("tailwindcss"),
+        require("autoprefixer"),
+    ])
     .version()
     .disableNotifications();

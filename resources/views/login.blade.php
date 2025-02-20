@@ -1,20 +1,33 @@
 @extends('layouts.base-layout')
-@push('styles')<link href="{{ mix('css/login.css') }}" rel="stylesheet">@endpush
 @section('content')
-  <form method="post" class="login p-2">
-    <h2>Prihlásenie</h2>
-    @if ($errors->any())
-      <div class="login__errors p-1">
-        @foreach ($errors->all() as $error)
-          <div>{{ $error }}</div>
-        @endforeach
-      </div>
-    @endif
-    @csrf
-    <label for="email">Email</label>
-    <input type="text" name="email" id="email" required oninvalid="this.setCustomValidity('Pole email je povinné.')" oninput="this.setCustomValidity('')">
-    <label for="pass">Heslo</label>
-    <input type="password" name="password" id="pass" required oninvalid="this.setCustomValidity('Pole heslo je povinné.')" oninput="this.setCustomValidity('')">
-    <button>Prihlásiť sa</button>
-  </form>
+    <div class="min-h-[calc(100vh-theme(spacing.nav)-theme(spacing.footer))] flex items-center justify-center px-4 py-8">
+        <form method="post" class="w-full max-w-md bg-secondary rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-bold text-tertiary mb-6">Prihlásenie</h2>
+
+            @if ($errors->any())
+                <div class="bg-danger-light text-danger p-4 rounded mb-6">
+                    @foreach ($errors->all() as $error)
+                        <div>{{ $error }}</div>
+                    @endforeach
+                </div>
+            @endif
+
+            @csrf
+            <div class="space-y-4 text-gray-700">
+                <div>
+                    <label for="email" class="font-medium">Email</label>
+                    <input type="text" name="email" id="email" required class="mt-1"
+                        oninvalid="this.setCustomValidity('Pole email je povinné.')" oninput="this.setCustomValidity('')">
+                </div>
+
+                <div>
+                    <label for="pass" class="font-medium">Heslo</label>
+                    <input type="password" name="password" id="pass" required class="mt-1"
+                        oninvalid="this.setCustomValidity('Pole heslo je povinné.')" oninput="this.setCustomValidity('')">
+                </div>
+
+                <button type="submit" class="w-full">Prihlásiť sa</button>
+            </div>
+        </form>
+    </div>
 @endsection

@@ -1,69 +1,103 @@
 @extends('layouts.base-layout')
 @push('styles')
-<link async href="{{ mix('css/admin-story.css') }}" rel="stylesheet">
-<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
 @endpush
 @push('scripts')
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-  integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 @endpush
 @section('content')
-<form method="POST" class="p-2 card" enctype="multipart/form-data">
-  @csrf
-  {{ method_field($method ?? "POST") }}
-  <h2>{{ $title }}</h2>
-  @if ($errors->any())
-  <div class="danger p-1">
-    @foreach ($errors->all() as $error)
-    <div>{{ $error }}</div>
-    @endforeach
-  </div>
-  @endif
-  <label for="title">Názov</label>
-  <input class="w-100" type="text" name="title" id="title" required value="{{$story->title ?? ''}}"
-    oninvalid="this.setCustomValidity('Pole názov je povinné.')" oninput="this.setCustomValidity('')">
-  <label for="reference">Variabilný symbol</label>
-  <input class="w-100" type="number" name="reference" id="reference" required value="{{$story->reference ?? ''}}"
-    oninvalid="this.setCustomValidity('Pole variabilný symbol je povinné.')" oninput="this.setCustomValidity('')">
-  <label for="content">Text</label>
-  <input id='hidden-content' type="hidden" name="content" value="{{ strip_tags($story->content ?? '') }}">
-  <div id="content">{{ strip_tags($story->content ?? '')}}</div>
-  @if ($enableFiles ?? true)
-  <label class="file-upload" for="images">Obrázky
-    <input type="file" multiple name="images[]" id="images">
-  </label>
-  @endif
-  <button class="sucess">{{ $btn }}</button>
-</form>
-<script>
-  const quill = new Quill('#content', { theme: 'snow' })
-  quill.on('text-change', () => document.getElementById('hidden-content').value = quill.getText())
-  const appendFileNames = files => {
-    $('.file-upload div').remove()
-    Array.from(files).forEach(({name}) => {
-        const el = document.createElement('div')
-        el.appendChild(document.createTextNode(name))
-        $('.file-upload').append(el)
-    })
-  }
-  $('.file-upload')
-    .on('change', e => appendFileNames(e.originalEvent.target.files))
-    .on('dragover', function(e) {
-      e.preventDefault()
-      e.stopPropagation()
-      $(this).addClass('file-upload--dragging')
-    })
-    .on('dragleave', function(e) {
-      $(this).removeClass('file-upload--dragging')
-    })
-    .on('drop', function (e) {
-      e.preventDefault()
-      e.stopPropagation()
-      $(this).removeClass('file-upload--dragging')
-      const files = e.originalEvent.dataTransfer.files
-      document.getElementById('images').files = files
-      appendFileNames(files)
-    })
-</script>
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <form method="POST" class="bg-secondary space-y-6 text-gray-600 rounded-lg shadow-lg p-6"
+            enctype="multipart/form-data">
+            @csrf
+            {{ method_field($method ?? 'POST') }}
+            <h2>{{ $title }}</h2>
+            @if ($errors->any())
+                <div class="danger p-1">
+                    @foreach ($errors->all() as $error)
+                        <div>{{ $error }}</div>
+                    @endforeach
+                </div>
+            @endif
+            <label>
+                Názov
+                <input class="w-100" type="text" name="title" id="title" required value="{{ $story->title ?? '' }}"
+                    oninvalid="this.setCustomValidity('Pole názov je povinné.')" oninput="this.setCustomValidity('')">
+            </label>
+            <label>Variabilný symbol
+                <input class="w-100" type="number" name="reference" id="reference" required
+                    value="{{ $story->reference ?? '' }}"
+                    oninvalid="this.setCustomValidity('Pole variabilný symbol je povinné.')"
+                    oninput="this.setCustomValidity('')">
+            </label>
+            <div>
+                <label for="content">Text
+                    <input id='hidden-content' type="hidden" name="content"
+                        value="{{ strip_tags($story->content ?? '') }}">
+                </label>
+                <div id="content">{{ strip_tags($story->content ?? '') }}</div>
+            </div>
+            @if ($enableFiles ?? true)
+                <div id="files-wrapper"
+                    class="flex flex-col px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md min-h-48">
+                    <div id="dropzone" class="mt-1 flex grow justify-around items-center">
+                        <label for="images"
+                            class="file-upload cursor-pointer bg-white rounded-md font-medium text-primary">
+                            Nahraj obrázky kliknutím alebo presunutím sem
+                            <input id="images" name="images[]" type="file" multiple class="sr-only">
+                        </label>
+                    </div>
+                </div>
+            @endif
+            <div class="flex justify-end">
+                <button class="ml-auto">{{ $btn }}</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        const quill = new Quill('#content', {
+            theme: 'snow'
+        })
+        quill.on('text-change', () => document.getElementById('hidden-content').value = quill.getText())
+
+        const appendFileNames = files => {
+            const prevUl = document.querySelector('#dropzone ul')
+            if (prevUl) prevUl.remove()
+
+            const documentList = document.createElement('ul')
+            Array.from(files).forEach(({
+                name
+            }) => {
+                const el = document.createElement('li')
+                el.textContent = name
+                documentList.appendChild(el)
+            })
+
+            if (files.length && !document.getElementById('reset-files')) {
+                const resetButton = document.createElement('button')
+                resetButton.id = 'reset-files'
+                resetButton.textContent = 'Reset'
+                resetButton.type = 'button'
+                resetButton.classList.add('mx-auto', 'bg-transparent', 'text-gray-600', 'cursor-pointer', 'mt-2',
+                    'underline')
+                resetButton.addEventListener('click', () => {
+                    document.getElementById('images').value = ''
+                    documentList.remove()
+                    resetButton.remove()
+                })
+                document.getElementById('files-wrapper').appendChild(resetButton)
+            }
+
+            document.getElementById('dropzone').appendChild(documentList)
+        }
+        document.getElementById('images').addEventListener('change', e => appendFileNames(e.target.files))
+        document.getElementById('dropzone').addEventListener('dragover', e => e.preventDefault())
+        document.getElementById('dropzone').addEventListener('drop', e => {
+            e.preventDefault()
+            e.stopPropagation()
+            const files = e.dataTransfer.files
+            document.getElementById('images').files = files
+            appendFileNames(files)
+        })
+    </script>
 @endsection

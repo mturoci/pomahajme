@@ -1,12 +1,4 @@
-<svg id='menu' onclick="onMenuClick" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 210 210"
-  style="enable-background:new 0 0 210 210;" xml:space="preserve">
-  <path id="XMLID_4_" d="M75,0H15C6.716,0,0,6.716,0,15v60c0,8.284,6.716,15,15,15h60c8.284,0,15-6.716,15-15V15
-		C90,6.716,83.284,0,75,0z" />
-  <path id="XMLID_6_" d="M75,120H15c-8.284,0-15,6.716-15,15v60c0,8.284,6.716,15,15,15h60c8.284,0,15-6.716,15-15v-60
-		C90,126.716,83.284,120,75,120z" />
-  <path id="XMLID_8_" d="M195,0h-60c-8.284,0-15,6.716-15,15v60c0,8.284,6.716,15,15,15h60c8.284,0,15-6.716,15-15V15
-		C210,6.716,203.284,0,195,0z" />
-  <path id="XMLID_10_" d="M195,120h-60c-8.284,0-15,6.716-15,15v60c0,8.284,6.716,15,15,15h60c8.284,0,15-6.716,15-15v-60
-		C210,126.716,203.284,120,195,120z" />
-</svg>
+ <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"
+     data-slot="icon">
+     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+ </svg>

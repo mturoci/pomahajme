@@ -2,141 +2,200 @@
 <html lang="sk">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Stránka zameraná na zbierku peňazí pre rodiny s chorými deťmi, ktoré majú finančné ťažkosti.">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  @stack('meta')
-  <title>Pomahajme.sk</title>
-  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" as="style"
-    onload="this.onload=null;this.rel='stylesheet'" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  @stack('styles')
-  @stack('scripts')
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Stránka zameraná na zbierku peňazí pre rodiny s chorými deťmi, ktoré majú finančné ťažkosti.">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @stack('meta')
+    <title>Pomahajme.sk</title>
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    @stack('styles')
+    @stack('scripts')
 </head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-T5TX4P5G8Z"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-T5TX4P5G8Z');
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-T5TX4P5G8Z');
 </script>
 
-<body>
-  <header>
-    @include('icons.menu')
-    <nav id='nav' class='nav'>
-      <ul class='nav__list'>
-        <li>
-          <a href="/pribehy">Príbehy</a>
-          <a href="/euro-nadeje">Euro nádeje</a>
-          <a href="/dokonale-vianoce">Dokonalé Vianoce</a>
-          <a href="/o-nas">O nás</a>
-          <a href="/dokumenty">Dokumenty</a>
-          {{-- <a href="/statistika">Štatistika</a> --}}
-        </li>
-      </ul>
-    </nav>
-    <div class="header__icons">
-      <a href='/' aria-label='logo'>@include('icons.logo')</a>
-      <a href="https://www.facebook.com/pomahajme.sk/" target="_blank" rel="noopener" class="fb"
-        aria-label="odkaz na facebookovú stránku">
-        @include('icons.fb')
-      </a>
-    </div>
-  </header>
-  <main>@yield('content')</main>
-  <footer class="footer">
-    @php
-    $sponsors = [
-    (object) ['url' => 'https://www.mynidum.sk/', 'logo' => 'nidum.svg'],
-    (object) ['url' => 'https://insempre.sk/', 'logo' => 'insempre.png'],
-    (object) ['url' => 'https://www.mojadm.sk/', 'logo' => 'dm.png'],
-    (object) ['url' => 'https://fitshaker.sk/', 'logo' => 'fitshaker.svg'],
-    (object) ['url' => 'https://www.golftatry.sk/', 'logo' => 'blackstorck.svg'],
-    (object) ['url' => 'https://www.trustpay.sk/', 'logo' => 'trustpay.svg'],
-    (object) ['url' => 'https://www.lconsultingsk.sk/', 'logo' => 'lconsulting.png'],
-    ];
-    $partners = [
-    (object) ['url' => 'https://novumpresov.sk/', 'logo' => 'novum.svg'],
-    (object) ['url' => 'https://delfinoterapiask.eu/', 'logo' => 'delfinoterapia.png'],
-    (object) ['url' => 'https://eshop.rdmgaraz.sk/', 'logo' => 'rdm.png'],
-    (object) ['url' => 'https://www.macosro.sk/', 'logo' => 'maco.png'],
-    (object) ['url' => 'http://pkauto.sk/', 'logo' => 'pkauto.svg'],
-    (object) ['url' => 'https://vysokofrekvencnaterapia.zombeek.sk', 'logo' => 'vysokofrekvencnaterapia.png'],
-    (object) ['url' => 'https://www.facebook.com/progress.truskavets', 'logo' => 'progress.png'],
-    ];
-    $awards = [
-    (object) ['url' => 'https://www.zlatafirma.eu', 'logo' => 'zlata-firma.png'],
-    ];
-    @endphp
-    <section class="footer__main">
-      <address class="pl-2">
-        <h2 class="p-2 text-center">KONTAKT</h2>
-        <p>Tomáš Berka zakladateľ a predseda o.z. Podaj Pomoc</p>
-        <p>MV SR, číslo spisu: VVS/1-900/90-60082</p>
-        <p>Okružná 142, 08212 Kapušany</p>
-        <p>IČO: 53358066</p>
-        <a href="mailto:info@pomahajme.sk">info@pomahajme.sk</a>
-        <a href="tel:0949 01 22 02">0949 012 202</a>
-        <a href="https://ib.fio.sk/ib/transparent?a=2201942423" target="_blank" rel="noopener">SK41 8330 0000 0022 0194
-          2423 (transparentný účet)</a>
-      </address>
-      <article class="pl-2">
-        <h2 class="p-2 text-center">REKLAMNÍ PARTNERI</h2>
-        <div class="partners">
-          @foreach ($partners as $p)
-          <a href={{ $p->url }} target="_blank" rel="noopener">
-            <img height='50' src={{ asset('img/'.$p->logo) }} alt={{ $p->url }} />
-          </a>
-          @endforeach
-        </div>
-      </article>
-      <article class="pl-2 pr-2">
-        <h2 class="p-2 text-center">SPONZORI</h2>
-        <div class="partners">
-          @foreach ($sponsors as $s)
-          <a href={{ $s->url }} target="_blank" rel="noopener">
-            <img height='50' src={{ asset('img/'.$s->logo) }} alt={{ $s->url }} />
-          </a>
-          @endforeach
-        </div>
-      </article>
-    </section>
-    <article class="pl-2 pr-2">
-      <h2 class="p-2 text-center">OCENENIA</h2>
-      <div class="partners">
-        @foreach ($awards as $a)
-        <a href={{ $a->url }} target="_blank" rel="noopener">
-          <img height='50' src={{ asset('img/'.$a->logo) }} alt={{ $a->url }} />
-        </a>
-        @endforeach
-      </div>
-    </article>
-    <section class="text-center p-2 font-w7">{{ date('Y') }} © pomahajme.sk / Všetky práva vyhradené.</section>
-  </footer>
-  <script>
-    document.getElementById('menu').onclick = onMenuClick
-    let isMenuOpen = false;
+<body class="flex flex-col min-h-screen bg-gradient-primary font-sans text-secondary">
+    <header class="bg-white/5 backdrop-blur-sm sticky top-0 z-50 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 relative">
+            <div class="flex items-center justify-between h-nav">
+                <a href='/' aria-label='logo' class="flex-shrink-0">
+                    @include('icons.logo')
+                </a>
 
-    function onMenuClick() {
-      isMenuOpen = !isMenuOpen
-      const nav = document.getElementById('nav');
-      if (isMenuOpen) {
-        nav.classList.add('open')
-        nav.classList.remove('closed')
-      } else {
-        nav.classList.add('closed')
-        nav.classList.remove('open')
-      }
-    }
-  </script>
+                <button id="menu" class="md:hidden p-2 hover:bg-white/10 rounded-lg transition-colors">
+                    <span class="sr-only">Mobile menu</span>
+                    @include('icons.menu')
+                </button>
+
+                <nav id="nav"
+                    class="fixed md:static inset-y-0 left-0 w-3/4 md:w-auto transform -translate-x-full md:translate-x-0
+                            md:bg-transparent transition-all duration-300 ease-in-out md:transition-none
+                            shadow-2xl md:shadow-none">
+                    <ul
+                        class="flex bg-gradient-primary h-[100vh] md:h-auto md:bg-none flex-col md:flex-row items-stretch md:items-center space-y-1 md:space-y-0 md:space-x-2 p-6 md:p-0">
+                        @php
+                            $navItems = [
+                                ['url' => '/pribehy', 'text' => 'Príbehy'],
+                                ['url' => '/euro-nadeje', 'text' => 'Euro nádeje'],
+                                ['url' => '/dokonale-vianoce', 'text' => 'Dokonalé Vianoce'],
+                                ['url' => '/o-nas', 'text' => 'O nás'],
+                                ['url' => '/dokumenty', 'text' => 'Dokumenty'],
+                            ];
+                        @endphp
+
+                        @foreach ($navItems as $item)
+                            @php
+                                $isActive = request()->is(trim($item['url'], '/'));
+                            @endphp
+                            <li>
+                                <a href="{{ $item['url'] }}"
+                                    class="block px-4 py-2 text-sm font-medium tracking-wide uppercase
+                          {{ $isActive
+                              ? 'text-primary bg-white/10 lg:bg-transparent lg:text-primary lg:after:block lg:after:h-0.5 lg:after:bg-primary lg:after:transition-transform lg:after:scale-x-100'
+                              : 'text-secondary hover:text-primary hover:bg-white/5 lg:hover:bg-transparent lg:after:block lg:after:h-0.5 lg:after:bg-primary lg:after:transition-transform lg:after:scale-x-0 lg:hover:after:scale-x-100' }}
+                          rounded lg:rounded-none transition-all">
+                                    {{ $item['text'] }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </nav>
+
+                <a href="https://www.facebook.com/pomahajme.sk/" target="_blank" rel="noopener"
+                    class="hidden md:block text-secondary hover:text-primary p-2 hover:bg-white/10 rounded-lg transition-all flex-shrink-0"
+                    aria-label="odkaz na facebookovú stránku">
+                    @include('icons.fb')
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        @yield('content')
+    </main>
+
+    <footer class="backdrop-blur-sm mt-32 py-12 max-w-7xl mx-auto px-6 lg:px-8">
+        <h2 class="text-center text-white text-4xl font-semibold">Partneri</h2>
+        <div class="flex flex-wrap gap-8 mt-8">
+            @foreach ($partners as $p)
+                <a href={{ $p->url }} target="_blank" rel="noopener" class="hover:opacity-80 transition-opacity">
+                    <img class="min-h-[50px] max-h-[50px] object-contain w-auto" src={{ asset('img/' . $p->logo) }}
+                        alt={{ $p->url }} />
+                </a>
+            @endforeach
+        </div>
+
+
+        <div class="grid grid-cols-1 gap-10 mt-40 lg:grid-cols-3">
+            <div class='flex flex-col justify-between'>
+                <section>
+                    <h2 class="text-pretty text-4xl font-semibold tracking-tight text-white">o.z. Podaj Pomoc</h2>
+                    <p class="mt-4 text-base/7 text-white">MV SR, číslo spisu: VVS/1-900/90-60082</p>
+                </section>
+                <section class="mt-6">
+                    @foreach ($awards as $a)
+                        <a href={{ $a->url }} target="_blank" rel="noopener"
+                            class="hover:opacity-80 transition-opacity">
+                            <img class="h-12 w-auto mx-auto object-contain" src={{ asset('img/' . $a->logo) }}
+                                alt={{ $a->url }} />
+                        </a>
+                    @endforeach
+                </section>
+                <p class="mt-12 font-normal">
+                    {{ date('Y') }} © pomahajme.sk / Všetky práva vyhradené.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-2 lg:gap-8">
+                <div class="rounded-2xl bg-gray-50 p-10">
+                    <h3 class="text-base/7 font-semibold text-gray-900">Zakladateľ</h3>
+                    <dl class="mt-3 space-y-1 text-sm/6 text-gray-600">
+                        <div>
+                            <dt class="sr-only">Zakladateľ</dt>
+                            <dd>Tomáš Berka</dd>
+                        </div>
+                    </dl>
+                </div>
+                <div class="rounded-2xl bg-gray-50 p-10">
+                    <h3 class="text-base/7 font-semibold text-gray-900">Sídlo</h3>
+                    <dl class="mt-3 space-y-1 text-sm/6 text-gray-600">
+                        <div>
+                            <dt class="sr-only">Ulica</dt>
+                            <dd>Okružná 142</dd>
+                        </div>
+                        <div class="mt-1">
+                            <dt class="sr-only">Mesto a PSČ</dt>
+                            <dd>08212 Kapušany</dd>
+                        </div>
+                    </dl>
+                </div>
+                <div class="rounded-2xl bg-gray-50 p-10">
+                    <h3 class="text-base/7 font-semibold text-gray-900">Kontakt</h3>
+                    <dl class="mt-3 space-y-1 text-sm/6 text-gray-600">
+                        <div>
+                            <dt class="sr-only">Email</dt>
+                            <dd>
+                                <a href="mailto:info@pomahajme.sk"
+                                    class="block text-primary transition-colors">info@pomahajme.sk</a>
+                            </dd>
+                        </div>
+                        <div class="mt-1">
+                            <dt class="sr-only">Telefónny kontakt</dt>
+                            <dd>
+                                <a href="tel:0949 01 22 02" class="block text-primary transition-colors">+412 949 012
+                                    202</a>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+                <div class="rounded-2xl bg-gray-50 p-10">
+                    <h3 class="text-base/7 font-semibold text-gray-900">Bankové spojenie</h3>
+                    <dl class="mt-3 space-y-1 text-sm/6 text-gray-600">
+                        <div>
+                            <dd>Transparentný účet</dd>
+                        </div>
+                        <div class="mt-1">
+                            <dt class="sr-only">Transparentný účet</dt>
+                            <dd>
+                                <a href="https://ib.fio.sk/ib/transparent?a=2201942423" target="_blank" rel="noopener"
+                                    class="block text-primary transition-colors">
+                                    SK41 8330 0000 0022 0194 2423
+                                </a>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+
+
+    </footer>
+
+    <script>
+        let isMenuOpen = false;
+        document.getElementById('menu').onclick = () => {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('-translate-x-full', isMenuOpen);
+            isMenuOpen = !isMenuOpen
+        }
+    </script>
 </body>
 
 </html>

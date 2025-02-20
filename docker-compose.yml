@@ -54,6 +54,7 @@ services:
             - ./resources:/resources
             - ./www:/www
             - ./webpack.mix.js:/webpack.mix.js
+        command: npm run watch
         # ports:
         #     - "3000:3000"
         #     - "3001:3001"
