@@ -95,7 +95,7 @@
         @php
             $partners = [
                 (object) ['url' => 'https://www.mynidum.sk/', 'logo' => 'nidum.svg'],
-                (object) ['url' => 'https://insempre.sk/', 'logo' => 'insempre.png'],
+                (object) ['url' => 'https://www.chiptuningpro.sk/', 'logo' => 'chiptuningpro.png'],
                 (object) ['url' => 'https://www.mojadm.sk/', 'logo' => 'dm.png'],
                 (object) ['url' => 'https://fitshaker.sk/', 'logo' => 'fitshaker.svg'],
                 (object) ['url' => 'https://www.golftatry.sk/', 'logo' => 'blackstorck.svg'],
