@@ -30,7 +30,7 @@
 
                     @if ($story->reference)
                         <div class="space-y-2">
-                            <h3 class="font-bold">Variabilný symbol</h3>
+                            <h3 class="font-bold text-gray-500">Variabilný symbol</h3>
                             <p class="text-primary font-bold text-xl">{{ $story->reference }}</p>
                         </div>
                     @endif
