@@ -1,10 +1,4 @@
 @extends('layouts.base-layout')
-@push('styles')
-    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
-@endpush
-@push('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
-@endpush
 @section('content')
     <div class="max-w-4xl mx-auto px-4 py-8">
         <form method="POST" class="bg-secondary space-y-6 text-gray-600 rounded-lg shadow-lg p-6"
@@ -32,10 +26,9 @@
             </label>
             <div>
                 <label for="content">Text
-                    <input id='hidden-content' type="hidden" name="content"
-                        value="{{ strip_tags($story->content ?? '') }}">
+                    <input id='hidden-content' type="hidden" name="content" value="{{ $story->content ?? '' }}">
                 </label>
-                <div id="content">{{ strip_tags($story->content ?? '') }}</div>
+                <div id="content" class="border-solid border-gray-300 border-2 p-2 h-80 max-h-80 overflow-y-auto"></div>
             </div>
             @if ($enableFiles ?? true)
                 <div id="files-wrapper"
@@ -50,54 +43,68 @@
                 </div>
             @endif
             <div class="flex justify-end">
-                <button class="ml-auto">{{ $btn }}</button>
+                <button type='submit' class="ml-auto">{{ $btn }}</button>
             </div>
         </form>
     </div>
-    <script>
-        const quill = new Quill('#content', {
-            theme: 'snow'
+    <script type="module">
+        import {
+            Editor
+        } from 'https://esm.sh/@tiptap/core'
+        import StarterKit from 'https://esm.sh/@tiptap/starter-kit'
+        const editor = new Editor({
+            element: document.querySelector('#content'),
+            extensions: [StarterKit],
+            content: document.getElementById('hidden-content').value,
+            onUpdate({
+                editor
+            }) {
+                document.getElementById('hidden-content').value = editor.getHTML()
+            },
         })
-        quill.on('text-change', () => document.getElementById('hidden-content').value = quill.getText())
+        const imagesInput = document.getElementById('images')
 
-        const appendFileNames = files => {
-            const prevUl = document.querySelector('#dropzone ul')
-            if (prevUl) prevUl.remove()
+        if (imagesInput) {
+            const appendFileNames = files => {
+                const prevUl = document.querySelector('#dropzone ul')
+                if (prevUl) prevUl.remove()
 
-            const documentList = document.createElement('ul')
-            Array.from(files).forEach(({
-                name
-            }) => {
-                const el = document.createElement('li')
-                el.textContent = name
-                documentList.appendChild(el)
+                const documentList = document.createElement('ul')
+                Array.from(files).forEach(({
+                    name
+                }) => {
+                    const el = document.createElement('li')
+                    el.textContent = name
+                    documentList.appendChild(el)
+                })
+
+                if (files.length && !document.getElementById('reset-files')) {
+                    const resetButton = document.createElement('button')
+                    resetButton.id = 'reset-files'
+                    resetButton.textContent = 'Reset'
+                    resetButton.type = 'button'
+                    resetButton.classList.add('mx-auto', 'bg-transparent', 'text-gray-600', 'cursor-pointer', 'mt-2',
+                        'underline')
+                    resetButton.addEventListener('click', () => {
+                        imagesInput.value = ''
+                        documentList.remove()
+                        resetButton.remove()
+                    })
+                    document.getElementById('files-wrapper').appendChild(resetButton)
+                }
+
+                document.getElementById('dropzone').appendChild(documentList)
+            }
+            imagesInput.addEventListener('change', e => appendFileNames(e.target.files))
+            document.getElementById('dropzone').addEventListener('dragover', e => e.preventDefault())
+            document.getElementById('dropzone').addEventListener('drop', e => {
+                e.preventDefault()
+                e.stopPropagation()
+                const files = e.dataTransfer.files
+                imagesInput.files = files
+                appendFileNames(files)
             })
 
-            if (files.length && !document.getElementById('reset-files')) {
-                const resetButton = document.createElement('button')
-                resetButton.id = 'reset-files'
-                resetButton.textContent = 'Reset'
-                resetButton.type = 'button'
-                resetButton.classList.add('mx-auto', 'bg-transparent', 'text-gray-600', 'cursor-pointer', 'mt-2',
-                    'underline')
-                resetButton.addEventListener('click', () => {
-                    document.getElementById('images').value = ''
-                    documentList.remove()
-                    resetButton.remove()
-                })
-                document.getElementById('files-wrapper').appendChild(resetButton)
-            }
-
-            document.getElementById('dropzone').appendChild(documentList)
         }
-        document.getElementById('images').addEventListener('change', e => appendFileNames(e.target.files))
-        document.getElementById('dropzone').addEventListener('dragover', e => e.preventDefault())
-        document.getElementById('dropzone').addEventListener('drop', e => {
-            e.preventDefault()
-            e.stopPropagation()
-            const files = e.dataTransfer.files
-            document.getElementById('images').files = files
-            appendFileNames(files)
-        })
     </script>
 @endsection

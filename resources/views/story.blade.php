@@ -38,7 +38,7 @@
 
                 <div class="flex-1 p-6">
                     <h1 class="text-tertiary mt-0.5">{{ $story->title }}</h1>
-                    <div class="text-text leading-8 whitespace-break-spaces">
+                    <div class="text-text leading-8 prose">
                         {!! $story->content !!}
                     </div>
 
