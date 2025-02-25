@@ -25,8 +25,7 @@
                 <div class="lg:w-72 p-6 space-y-4">
                     <img class="story__image m-1" src="{{ asset('story_images/' . $story->serializedImageLocations[0]) }}"
                         alt="Hlavný obrázok príbehu">
-                    <div class="fb-share-button h-7" data-href="{{ Request::url() }}" data-layout="button_count">
-                    </div>
+                    <div class="fb-share-button h-7" data-href="{{ Request::url() }}" data-layout="button_count"></div>
 
                     @if ($story->reference)
                         <div class="space-y-2">

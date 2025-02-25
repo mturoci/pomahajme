@@ -24,6 +24,10 @@
                     oninvalid="this.setCustomValidity('Pole variabilný symbol je povinné.')"
                     oninput="this.setCustomValidity('')">
             </label>
+            <label>
+                <input type="checkbox" name="is_finished" {{ $story->is_finished ? 'checked' : '' }}>
+                Ukončené
+            </label>
             <div>
                 <label for="content">Text
                     <input id='hidden-content' type="hidden" name="content" value="{{ $story->content ?? '' }}">

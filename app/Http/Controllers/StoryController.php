@@ -54,6 +54,7 @@ class StoryController extends Controller
         $story->title = $request->title;
         $story->content = $request->content;
         $story->reference = $request->reference;
+        $story->is_finished = $request->is_finished === 'on' ? 1 : 0;
 
         if ($story->save()) {
             $stories = Story::orderByDesc('created_at')->get();
