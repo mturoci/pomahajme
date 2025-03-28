@@ -157,9 +157,7 @@
                             <dt class="sr-only">Zakladateľ</dt>
                             <dd>Tomáš Berka</dd>
                         </div>
-                        <div>
-                            <dd>IČO: 53358066</dd>
-                        </div>
+                        <dd>IČO: 53358066</dd>
                     </dl>
                 </div>
                 <div class="rounded-2xl bg-gray-50 p-10">
