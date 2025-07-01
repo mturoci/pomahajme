@@ -53,6 +53,7 @@
                         @php
                             $navItems = [
                                 ['url' => '/pribehy', 'text' => 'Príbehy'],
+                                ['url' => '/galeria', 'text' => 'Galéria'],
                                 ['url' => '/euro-nadeje', 'text' => 'Euro nádeje'],
                                 ['url' => '/dokonale-vianoce', 'text' => 'Dokonalé Vianoce'],
                                 ['url' => '/o-nas', 'text' => 'O nás'],
