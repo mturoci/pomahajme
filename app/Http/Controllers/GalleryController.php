@@ -43,6 +43,20 @@ class GalleryController extends Controller
         $campaign = Campaign::findOrFail($campaignId);
         $image = GalleryImage::where('campaign_id', $campaignId)->findOrFail($imageId);
         
-        return view('gallery.image', compact('campaign', 'image'));
+        // Get all images from this campaign for carousel navigation
+        $campaignImages = GalleryImage::where('campaign_id', $campaignId)
+            ->orderBy('id', 'asc')
+            ->get();
+        
+        // Find current image position and calculate previous/next
+        $currentIndex = $campaignImages->search(function($item) use ($imageId) {
+            return $item->id == $imageId;
+        });
+        
+        // Get previous and next image IDs
+        $prevImage = ($currentIndex > 0) ? $campaignImages[$currentIndex - 1] : null;
+        $nextImage = ($currentIndex < $campaignImages->count() - 1) ? $campaignImages[$currentIndex + 1] : null;
+        
+        return view('gallery.image', compact('campaign', 'image', 'prevImage', 'nextImage'));
     }
 }
