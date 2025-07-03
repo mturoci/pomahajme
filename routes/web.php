@@ -52,6 +52,23 @@ Route::post('/admin/login', [LoginController::class, 'authenticate']);
 
 Route::put('/admin/upravit-pribeh', [StoryController::class, 'update'])->middleware('auth');
 
+// Admin Album Routes
+Route::middleware(['auth'])->group(function () {
+    // Album management
+    Route::get('/admin/albums', [App\Http\Controllers\AlbumController::class, 'indexAdmin']);
+    Route::get('/admin/album/create', [App\Http\Controllers\AlbumController::class, 'create']);
+    Route::post('/admin/album', [App\Http\Controllers\AlbumController::class, 'store']);
+    Route::get('/admin/albums/edit', [App\Http\Controllers\AlbumController::class, 'update']);
+    Route::put('/admin/albums/edit', [App\Http\Controllers\AlbumController::class, 'update']);
+    Route::delete('/admin/albums/delete', [App\Http\Controllers\AlbumController::class, 'destroy']);
+    
+    // Album images management
+    Route::get('/admin/albums/{id}/images', [App\Http\Controllers\AlbumController::class, 'showImages']);
+    Route::post('/admin/albums/{id}/images/upload', [App\Http\Controllers\AlbumController::class, 'uploadImages']);
+    Route::put('/admin/albums/{id}/images/{imageId}', [App\Http\Controllers\AlbumController::class, 'updateImage']);
+    Route::delete('/admin/albums/{id}/images/{imageId}/delete', [App\Http\Controllers\AlbumController::class, 'deleteImage']);
+});
+
 Route::get('/dokumenty', function () {
     return view('documents');
 });

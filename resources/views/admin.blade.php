@@ -1,6 +1,12 @@
 @extends('layouts.base-layout')
 @section('content')
     <div class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Admin navigation tabs -->
+        <div class="mb-6 flex border-b border-gray-200">
+            <a href="/admin" class="px-6 py-3 bg-primary text-primary-text rounded-t-lg font-medium">Príbehy</a>
+            <a href="/admin/albums" class="px-6 py-3 bg-gray-100 text-gray-600 hover:bg-gray-200 rounded-t-lg font-medium ml-2">Galéria</a>
+        </div>
+        
         <div class="bg-secondary rounded-lg shadow-lg p-6">
             @if ($message ?? null || session()->has('message'))
                 <div class="bg-success-light text-success p-4 rounded mb-4">
