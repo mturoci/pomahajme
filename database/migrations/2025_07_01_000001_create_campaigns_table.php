@@ -14,7 +14,7 @@ class CreateCampaignsTable extends Migration
      */
     public function up()
     {
-        Schema::create('campaigns', function (Blueprint $table) {
+        Schema::create('albums', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->text('description')->nullable();
@@ -23,7 +23,7 @@ class CreateCampaignsTable extends Migration
             $table->timestamps();
         });
 
-        DB::table('campaigns')->insert([
+        DB::table('albums')->insert([
             [
                 'title' => 'Letná pomoc 2024',
                 'description' => 'Fotografická zbierka z letných aktivít na pomoc deťom.',
@@ -58,6 +58,6 @@ class CreateCampaignsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('campaigns');
+        Schema::dropIfExists('albums');
     }
 }

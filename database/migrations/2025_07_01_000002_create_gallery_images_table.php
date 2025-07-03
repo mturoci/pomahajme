@@ -16,7 +16,7 @@ class CreateGalleryImagesTable extends Migration
     {
         Schema::create('gallery_images', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('campaign_id')->constrained()->onDelete('cascade');
+            $table->foreignId('album_id')->constrained()->onDelete('cascade');
             $table->string('image_path');
             $table->string('title')->nullable();
             $table->text('description')->nullable();
@@ -26,7 +26,7 @@ class CreateGalleryImagesTable extends Migration
         // Add some dummy data using existing images from the img directory
         DB::table('gallery_images')->insert([
             [
-                'campaign_id' => 1,
+                'album_id' => 1,
                 'image_path' => 'img/1.jpg',
                 'title' => 'Letný tábor - Aktivity',
                 'description' => 'Deti sa zúčastňujú letných aktivít v tábore.',
@@ -34,7 +34,7 @@ class CreateGalleryImagesTable extends Migration
                 'updated_at' => now(),
             ],
             [
-                'campaign_id' => 1,
+                'album_id' => 1,
                 'image_path' => 'img/2.jpg',
                 'title' => 'Letný tábor - Výlet',
                 'description' => 'Spoločný výlet do prírody.',
@@ -42,7 +42,7 @@ class CreateGalleryImagesTable extends Migration
                 'updated_at' => now(),
             ],
             [
-                'campaign_id' => 1,
+                'album_id' => 1,
                 'image_path' => 'img/3.jpg',
                 'title' => 'Letný tábor - Športové hry',
                 'description' => 'Športové aktivity pre deti.',
@@ -50,32 +50,32 @@ class CreateGalleryImagesTable extends Migration
                 'updated_at' => now(),
             ],
             [
-                'campaign_id' => 2,
-                'image_path' => 'img/1.jpg',
+                'album_id' => 2,
+                'image_path' => 'img/4.jpg',
                 'title' => 'Vianočná besiedka',
                 'description' => 'Spoločné zdobenie stromčeka.',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'campaign_id' => 2,
-                'image_path' => 'img/2.jpg',
+                'album_id' => 2,
+                'image_path' => 'img/5.jpg',
                 'title' => 'Rozdávanie darčekov',
                 'description' => 'Odovzdávanie darčekov deťom.',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'campaign_id' => 3,
-                'image_path' => 'img/3.jpg',
+                'album_id' => 3,
+                'image_path' => 'img/6.jpg',
                 'title' => 'Jarný piknik',
                 'description' => 'Piknik v parku s rodinami.',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'campaign_id' => 3,
-                'image_path' => 'img/1.jpg',
+                'album_id' => 3,
+                'image_path' => 'img/7.jpg',
                 'title' => 'Sadenie stromčekov',
                 'description' => 'Environmentálna aktivita.',
                 'created_at' => now(),

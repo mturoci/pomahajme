@@ -57,4 +57,4 @@ Route::get('/dokumenty', function () {
 });
 Route::get('/galeria', [App\Http\Controllers\GalleryController::class, 'index']);
 Route::get('/galeria/{id}', [App\Http\Controllers\GalleryController::class, 'show']);
-Route::get('/galeria/{campaignId}/image/{imageId}', [App\Http\Controllers\GalleryController::class, 'showImage']);
+Route::get('/galeria/{albumId}/image/{imageId}', [App\Http\Controllers\GalleryController::class, 'showImage']);

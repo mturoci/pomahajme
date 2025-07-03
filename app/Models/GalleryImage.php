@@ -7,17 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class GalleryImage extends Model
 {
     protected $fillable = [
-        'campaign_id',
+        'album_id',
         'image_path',
         'title',
         'description',
     ];
 
     /**
-     * Get the campaign that owns the image.
+     * Get the album that owns the image.
      */
-    public function campaign()
+    public function album()
     {
-        return $this->belongsTo(Campaign::class);
+        return $this->belongsTo(Album::class);
     }
 }

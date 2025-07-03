@@ -12,20 +12,20 @@
         </div>
 
         <div class="mb-8 bg-white/10 backdrop-blur-sm rounded-lg p-6">
-            <h1 class="text-3xl font-bold text-white mb-2">{{ $campaign->title }}</h1>
-            <p class="text-gray-300 mb-4">{{ $campaign->campaign_date->format('d.m.Y') }}</p>
-            @if ($campaign->description)
-                <p class="text-gray-200">{{ $campaign->description }}</p>
+            <h1 class="text-3xl font-bold text-white mb-2">{{ $album->title }}</h1>
+            <p class="text-gray-300 mb-4">{{ $album->campaign_date->format('d.m.Y') }}</p>
+            @if ($album->description)
+                <p class="text-gray-200">{{ $album->description }}</p>
             @endif
         </div>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            @foreach ($campaign->galleryImages as $image)
-                <a href="{{ url('/galeria/' . $campaign->id . '/image/' . $image->id) }}" class="block group">
-                    <div class="rounded-lg overflow-hidden shadow-xs bg-white/10 backdrop-blur-sm hover:shadow-md transition-all duration-300">
+            @foreach ($album->galleryImages as $image)
+                <a href="{{ url('/galeria/' . $album->id . '/image/' . $image->id) }}" class="block group">
+                    <div class="rounded-lg overflow-hidden shadow bg-white/10 backdrop-blur-sm hover:shadow-md transition-all duration-300">
                         <div class="aspect-square relative overflow-hidden">
                             <img src="{{ asset($image->image_path) }}" 
-                                 alt="{{ $image->title ?? $campaign->title }}" 
+                                 alt="{{ $image->title ?? $album->title }}" 
                                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                             
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
