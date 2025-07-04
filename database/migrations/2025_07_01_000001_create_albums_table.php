@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class CreateCampaignsTable extends Migration
+class CreateAlbumsTable extends Migration
 {
     /**
      * Run the migrations.
