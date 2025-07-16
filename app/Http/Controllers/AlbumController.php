@@ -47,7 +47,7 @@ class AlbumController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'campaign_date' => 'required|date',
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:10000',
         ]);
 
         $album = new Album();
@@ -95,7 +95,7 @@ class AlbumController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'campaign_date' => 'required|date',
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:10000',
         ]);
 
         $album->title = $request->title;
@@ -183,7 +183,7 @@ class AlbumController extends Controller
         
         $request->validate([
             'images' => 'required',
-            'images.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048'
+            'images.*' => 'image|mimes:jpeg,png,jpg,webp|max:10000'
         ]);
 
         $uploadedCount = 0;
