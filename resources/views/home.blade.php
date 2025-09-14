@@ -22,7 +22,7 @@
                             alt="náhľad príbehu">
                         <div class="p-4">
                             <h2 class="text-xl font-bold text-tertiary -mt-1 mb-2">{{ $story->title }}</h2>
-                            <p class="text-text line-clamp-4">{{ strip_tags($story->content) }}</p>
+                            <p class="text-text line-clamp-4">{{ html_entity_decode(strip_tags($story->content)) }}</p>
                         </div>
                     </a>
                 </article>
