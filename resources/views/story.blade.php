@@ -38,7 +38,7 @@
                 <div class="flex-1 p-6">
                     <h1 class="text-tertiary mt-0.5">{{ $story->title }}</h1>
                     <div class="text-text leading-8 prose max-w-full whitespace-pre-line">
-                        {{ html_entity_decode(strip_tags(str_replace(['<br>', '<br/>', '<br />'], "\n", $story->content))) }}
+                        {{ html_entity_decode(strip_tags(str_replace(['</p><p>', '<p></p>', '<p>', '</p>'], ["\n", "\n", '', ''], $story->content))) }}
                     </div>
 
                     <a href="https://ib.fio.sk/ib/transparent?a=2201942423" target="_blank" rel="noopener"
