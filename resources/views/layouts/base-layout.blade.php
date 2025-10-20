@@ -100,7 +100,7 @@
                 (object) ['url' => 'https://www.mojadm.sk/', 'logo' => 'dm.png'],
                 (object) ['url' => 'https://fitshaker.sk/', 'logo' => 'fitshaker.svg'],
                 (object) ['url' => 'https://www.golftatry.sk/', 'logo' => 'blackstorck.svg'],
-                (object) ['url' => 'https://www.trustpay.sk/', 'logo' => 'trustpay.svg'],
+                (object) ['url' => 'https://finby.sk/', 'logo' => 'finby.svg'],
                 (object) ['url' => 'https://www.facebook.com/progress.truskavets', 'logo' => 'progress.png'],
                 (object) ['url' => 'https://www.lconsultingsk.sk/', 'logo' => 'lconsulting.png'],
                 (object) ['url' => 'https://novumpresov.sk/', 'logo' => 'novum.svg'],
