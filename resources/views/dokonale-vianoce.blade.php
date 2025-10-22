@@ -5,7 +5,7 @@
 
         <div class="p-6 md:p-12">
 
-            <img class="aspect-video rounded-xl overflow-hidden shadow-2xl mb-8" src="{{ asset('img/vianoce.jpg') }}"
+            <img class="aspect-video rounded-xl overflow-hidden shadow-2xl mb-8" src="{{ asset('img/dokonale_vianoce.jpg') }}"
                 alt="Reklama dokonale vianoce" class="w-full h-full object-cover">
 
             <div class="mx-auto">
