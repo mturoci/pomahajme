@@ -60,10 +60,11 @@
                         <li>Finančne – formou finančného príspevku na náš projekt</li>
                         <li>Materiálne – hračky, potraviny, oblečenie, kozmetika, domáce potreby</li>
                         <li>Spoluprácou – mediálne, logisticky, či formou služieb</li>
-                        <p>
-                            Každý dar, malý či veľký, má pre nás obrovskú hodnotu. Všetkým partnerom poskytujeme
-                            darovaciu zmluvu alebo zmluvu o charitatívnej reklame.
-                        </p>
+                    </ol>
+                    <p>
+                        Každý dar, malý či veľký, má pre nás obrovskú hodnotu. Všetkým partnerom poskytujeme
+                        darovaciu zmluvu alebo zmluvu o charitatívnej reklame.
+                    </p>
                 </div>
             </section>
 
