@@ -56,7 +56,7 @@
                     <p class="leading-relaxed">
                         Pomôcť môžete niekoľkými spôsobmi:
                     <p>
-                    <ol class="list-decimal pl-5 space-y-2">
+                    <ol class="list-decimal pl-5 space-y-2 my-4">
                         <li>Finančne – formou finančného príspevku na náš projekt</li>
                         <li>Materiálne – hračky, potraviny, oblečenie, kozmetika, domáce potreby</li>
                         <li>Spoluprácou – mediálne, logisticky, či formou služieb</li>
