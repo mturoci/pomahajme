@@ -3,8 +3,8 @@
     <section class="max-w-4xl mx-auto px-4 pt-16">
         <h1 class="text-4xl text-center font-bold text-secondary mb-6">Dokonalé Vianoce</h1>
 
-        <img class="rounded-xl overflow-hidden shadow-2xl mb-8" src="{{ asset('img/dokonale_vianoce.jpg') }}"
-            alt="Reklama dokonale vianoce" class="w-full h-full object-cover">
+        <img class="rounded-xl overflow-hidden shadow-2xl mb-8 w-full h-full object-cover"
+            src="{{ asset('img/dokonale_vianoce.jpg') }}" alt="Reklama dokonale vianoce">
         <section class="px-4 py-8 text-secondary space-y-8">
             <div>
                 <h2 class="text-2xl font-bold mb-4">O nás</h2>
