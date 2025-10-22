@@ -67,6 +67,10 @@
                     </p>
                 </div>
             </section>
+            <video controls>
+                <source src="{{ asset('videos/vianoce.mp4') }}" type="video/mp4">
+                Váš prehliadač nepodporuje video.
+            </video>
 
             <p class="mt-12 text-lg font-normal text-secondary text-center">
                 Sledujte náš projekt
