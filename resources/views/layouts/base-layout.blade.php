@@ -110,6 +110,7 @@
                 (object) ['url' => 'http://pkauto.sk/', 'logo' => 'pkauto.svg'],
                 (object) ['url' => 'https://www.autoskolavav.sk/', 'logo' => 'autoskola_vav.png'],
                 (object) ['url' => 'https://www.mecom.sk/sk/', 'logo' => 'mecom.svg'],
+                (object) ['url' => 'https://zabavka.sk/', 'logo' => 'zabavka.png'],
                 (object) [
                     'url' => 'https://www.facebook.com/people/Centrum-V%C3%B4%C4%BEa-%C5%BEi%C5%A5/100079550524517',
                     'logo' => 'volazit.png',
