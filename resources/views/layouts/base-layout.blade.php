@@ -189,7 +189,7 @@
                         <div class="mt-1">
                             <dt class="sr-only">Telefónny kontakt</dt>
                             <dd>
-                                <a href="tel:0949 01 22 02" class="block text-primary transition-colors">+412 949 012
+                                <a href="tel:0949 01 22 02" class="block text-primary transition-colors">+421 949 012
                                     202</a>
                             </dd>
                         </div>
