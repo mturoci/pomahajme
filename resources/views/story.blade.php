@@ -14,7 +14,7 @@
         nonce="41WSpN1a"></script>
     <script defer src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
         integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
-    <script defer type="text/javascript" src="https://mapi.trustpay.eu/mapi5/Scripts/TrustPay/popup.js"></script>
+    <script defer type="text/javascript" src="https://mapi.finby.eu/mapi5/Scripts/finby/popup.js"></script>
 @endpush
 @section('content')
     <div id="fb-root"></div>
@@ -33,6 +33,8 @@
                             <p class="text-primary font-bold text-xl">{{ $story->reference }}</p>
                         </div>
                     @endif
+
+                    <button class="show-popup px-4 py-2 bg-primary text-white font-bold rounded-lg shadow-lg hover:bg-primary-dark transition-colors block mx-auto">Pomôcť</button>
                 </div>
 
                 <div class="flex-1 p-6">
