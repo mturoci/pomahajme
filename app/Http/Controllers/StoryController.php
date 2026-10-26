@@ -102,7 +102,7 @@ class StoryController extends Controller
         $paymentType = 0;
         $secretKey = env('TRUSTPAY_SECRET', '');
         $sigData = sprintf('%d/%s/%s/%s/%d', $accountId, number_format($amount, 2, '.', ''), $currency, $reference, $paymentType);
-        $signature = hash_hmac('sha256', $sigData, $secretKey);
+        $signature = strtoupper(hash_hmac('sha256', $sigData, $secretKey));
 
         return sprintf('%s?AccountId=%d&Amount=%s&Currency=%s&Reference=%s&PaymentType=%d&Signature=%s', $baseUrl, $accountId, number_format($amount, 2, '.', ''), $currency, urlencode($reference), $paymentType, $signature);
     }
@@ -118,7 +118,7 @@ class StoryController extends Controller
         $story->serializedImageLocations = explode('|', $story->serializedImageLocations);
         return view('story', [
             'story' => $story,
-            'paymentUrl' => $this->getSetUpPaymentUrl($story->reference ?: 'default'),
+            'paymentUrl' => $this->getSetUpPaymentUrl($story->reference ?: $story->id . $story->id),
         ]);
     }
 
