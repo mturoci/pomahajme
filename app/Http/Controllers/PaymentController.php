@@ -12,7 +12,12 @@ class PaymentController extends Controller
     public function notification(Request $request)
     {
         $params = $request->all();
-        $sigData = implode('/', array_filter(array_map(fn ($f) => $params[$f] ?? null, self::SIGNATURE_FIELDS), fn ($v) => $v !== null && $v !== ''));
+        $values = array_map(function ($f) use ($params) {
+            return $params[$f] ?? null;
+        }, self::SIGNATURE_FIELDS);
+        $sigData = implode('/', array_filter($values, function ($v) {
+            return $v !== null && $v !== '';
+        }));
         $signature = strtoupper(hash_hmac('sha256', $sigData, env('TRUSTPAY_SECRET', '')));
         $valid = hash_equals($signature, strtoupper($params['Signature'] ?? ''));
 
