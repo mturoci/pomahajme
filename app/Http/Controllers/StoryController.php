@@ -104,7 +104,7 @@ class StoryController extends Controller
         $sigData = sprintf('%d/%s/%s/%s/%d', $accountId, number_format($amount, 2, '.', ''), $currency, $reference, $paymentType);
         $signature = strtoupper(hash_hmac('sha256', $sigData, $secretKey));
 
-        return sprintf('%s?AccountId=%d&Amount=%s&Currency=%s&Reference=%s&PaymentType=%d&Signature=%s', $baseUrl, $accountId, number_format($amount, 2, '.', ''), $currency, urlencode($reference), $paymentType, $signature);
+        return sprintf('%s?AccountId=%d&Amount=%s&Currency=%s&Reference=%s&PaymentType=%d&Signature=%s&NotificationUrl=%s', $baseUrl, $accountId, number_format($amount, 2, '.', ''), $currency, urlencode($reference), $paymentType, $signature, urlencode(url('/platba/notifikacia')));
     }
     /**
      * Display the specified resource.

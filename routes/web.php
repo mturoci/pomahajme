@@ -12,6 +12,7 @@
 */
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StoryController;
 use App\Story;
 use App\Transaction;
@@ -27,6 +28,7 @@ Route::get('/', function () {
 Route::get('/pribehy', [StoryController::class, 'index']);
 Route::get('/pribehy/{id}', [StoryController::class, 'show']);
 Route::get('/statistika', [StoryController::class, 'stats']);
+Route::match(['get', 'post'], '/platba/notifikacia', [PaymentController::class, 'notification']);
 Route::get('/euro-nadeje', function () {
     return view('euro');
 });
