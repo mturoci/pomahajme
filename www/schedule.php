@@ -1,7 +1,6 @@
 <?php
 use Illuminate\Database\Capsule\Manager as DB;
 use Carbon\Carbon;
-use Exception;
 use App\Transaction;
 use GuzzleHttp\Client;
 
@@ -36,8 +35,8 @@ if (Carbon::now()->hour == 0) {
             throw new Exception('Bank API token not found.');
         }
 
-        $client = new GuzzleHttp\Client(['base_uri' => 'https://www.fioapi.fio.cz']);
-        $response = $client->request('GET', '/rest/periods/' . $token . '/' . $yesterday . '/' . $yesterday . '/transactions.json');
+        $client = new GuzzleHttp\Client(['base_uri' => 'https://fioapi.fio.cz']);
+        $response = $client->request('GET', '/v1/rest/periods/' . $token . '/' . $yesterday . '/' . $yesterday . '/transactions.json');
 
         foreach (json_decode($response->getBody())->accountStatement->transactionList->transaction as $t) {
             $transaction = new Transaction();
