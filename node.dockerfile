@@ -1,8 +1,10 @@
-FROM node:14.15
+FROM node:18.18
+
+WORKDIR /app
 
 COPY package.json package-lock.json ./
 
-RUN npm i
+RUN npm ci
 
 COPY resources resources
 COPY www www

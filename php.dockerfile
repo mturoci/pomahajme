@@ -6,6 +6,8 @@ WORKDIR /app
 
 USER root
 
+# Debian bullseye is EOL; its packages only remain on archive.debian.org.
+RUN echo 'deb http://archive.debian.org/debian bullseye main\ndeb http://archive.debian.org/debian-security bullseye-security main' > /etc/apt/sources.list
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN docker-php-ext-install pdo_mysql
 RUN apt-get update && apt-get install -y git zip unzip
